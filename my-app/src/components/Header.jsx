@@ -59,7 +59,9 @@ const Header = () => {
               <i className="icon-sun" />
               <span className="sr-only">Toggle theme</span>
             </button> */}
-            <a href="/?auth=login" className="signin-button">Sign in</a>
+           
+              <a href="/?auth=login" className="signin-button">Sign in</a>
+            
           </div>
         </div>
       </div>

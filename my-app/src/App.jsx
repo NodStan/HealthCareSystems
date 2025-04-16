@@ -7,6 +7,8 @@ import HealthTools from './components/HealthTools';
 import Community from './components/Community';
 import Assistant from './components/Assistant';
 import Hero from './components/Hero';
+// import Signin from './Pages/Signin';
+// import Register from './Pages/Register';
 
 const App = () => {
   return (
@@ -20,6 +22,7 @@ const App = () => {
           <Route path="/health-tools" element={<HealthTools />} />
           <Route path="/community" element={<Community />} />
           <Route path="/assistant" element={<Assistant />} />
+          <Route path="/signin" element={<Signin />} />
         </Routes>
       </div>
     </Router>
