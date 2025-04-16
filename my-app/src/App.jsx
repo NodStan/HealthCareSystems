@@ -7,14 +7,12 @@ import HealthTools from './components/HealthTools';
 import Community from './components/Community';
 import Assistant from './components/Assistant';
 import Hero from './components/Hero';
-// import Signin from './Pages/Signin';
-// import Register from './Pages/Register';
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <div>
+      <div className='container'>
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/health-topics" element={<HealthTopics />} />
