@@ -4,11 +4,17 @@
   /* margin: 0 auto; */
   /* padding: 2rem; */
   /* text-align: center; */
-  /* background-color: #fff; */
+  background-color: #fff;
+
+}
+
+*{
+  background-color: white;
 }
 
 .container{
   margin-top: 2%;
+  background-color: white;
 }
 
 .logo {

@@ -7,6 +7,7 @@ import HealthTools from './components/HealthTools';
 import Community from './components/Community';
 import Assistant from './components/Assistant';
 import Hero from './components/Hero';
+import Signin from './Pages/Signin';
 
 const App = () => {
   return (

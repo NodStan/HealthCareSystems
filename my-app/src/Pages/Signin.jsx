@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Signin = () => {
   return (
-    <div>
-      
+    <div style={{color: "red"}}> 
+      Signin
     </div>
   )
 }

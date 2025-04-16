@@ -6,6 +6,8 @@
     display: block;
   }
 
+
+
   .hero-wrapper{
     /* width: 70%; */
     display: flex;
@@ -686,6 +688,7 @@
 
   .container {
     margin: 0 auto;
+    background-color: white;
   }
   
   .section-header {
