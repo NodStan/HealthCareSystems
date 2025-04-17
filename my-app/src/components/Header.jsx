@@ -22,13 +22,13 @@ const Header = () => {
               </div>
 
               <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-                <Link to="/">
-                  <p className="nav-linkss">Home</p>
+                <Link to="/" className="nav-linkss">
+                  <p >Home</p>
                 </Link>
-                <Link to="/articles" className="nav-link">Health Topics</Link>
-                <Link to="/health-search" className="nav-link">Search Conditions</Link>
+                <Link to="/articles" className="nav-link"><p>Health Topics</p></Link>
+                <Link to="/health-search" className="nav-link"><p>Search Conditions</p></Link>
                 <div className="dropdown">
-                  <p className="nav-link dropdown-trigger">Health Tools</p>
+                  <p className="nav-link dropdown-trigger"><p>Health Tools</p></p>
                   <div className="dropdown-menu">
                     <Link to="/symptom-checker" className="dropdown-item">Symptom Checker</Link>
                     <Link to="/health-calculators" className="dropdown-item">Health Calculators</Link>
@@ -37,7 +37,7 @@ const Header = () => {
                     <Link to="/emergency-guide" className="dropdown-item">Emergency Guide</Link>
                   </div>
                 </div>
-                <Link to="/community-forum" className="nav-link">Community</Link>
+                <Link to="/community-forum" className="nav-link"><p>Community</p></Link>
               </div>
             </div>
 
@@ -62,7 +62,8 @@ const Header = () => {
                 </svg>
                 <span className="sr-only">Toggle theme</span>
               </button>
-              <a href="/?auth=login" className="signin-button">Sign in</a>
+              <Link to="signin" className="signin-button"><p>Sign in</p></Link>
+
               <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
                 <svg xmlns="http://www.w3.org/2000/svg" className="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="3" y1="6" x2="21" y2="6" />

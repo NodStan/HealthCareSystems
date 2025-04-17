@@ -123,6 +123,7 @@
   .header-left {
     display: flex;
     align-items: center;
+    height: 100%;
   }
   
   .logo-container {
@@ -173,7 +174,7 @@
   .nav-link {
     padding: 0.25rem 0;
     border-bottom: 2px solid transparent;
-    color: var(--muted-foreground);
+    color: #333;
     text-decoration: none;
     transition: all 0.2s ease;
 }
@@ -187,7 +188,7 @@
   /* Dropdown */
   .dropdown {
     position: relative;
-    margin-top: 9px;
+    margin-top: 7px;
   }
   
   .dropdown-trigger {
@@ -221,14 +222,14 @@
     display: block;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
-    color: var(--muted-foreground);
+    color: #333;
     text-decoration: none;
     transition: background-color 0.2s;
   }
   
   .dropdown-item:hover {
     background-color: var(--muted);
-    color: var(--foreground);
+    color: #333;
   }
   
   /* Right */
