@@ -7,7 +7,6 @@ import HealthTools from './components/HealthTools';
 import Community from './components/Community';
 import Assistant from './components/Assistant';
 import Hero from './components/Hero';
-import Signin from './components/Signin';
 import './App.css';
 
 const App = () => {
@@ -22,7 +21,6 @@ const App = () => {
           <Route path="/health-tools" element={<HealthTools />} />
           <Route path="/community" element={<Community />} />
           <Route path="/assistant" element={<Assistant />} />
-          <Route path="signin" element={<Signin />} />
         </Routes>
       </div>
     </Router>
