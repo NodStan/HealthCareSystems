@@ -62,7 +62,10 @@ const Header = () => {
                 </svg>
                 <span className="sr-only">Toggle theme</span>
               </button>
-              <a href="/?auth=login" className="signin-button">Sign in</a>
+              {/* <a href="/?auth=login" ></a> */}
+              <Link className="signin-button" to="/signin">
+              <p>Sign in</p>
+              </Link>
               <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
                 <svg xmlns="http://www.w3.org/2000/svg" className="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="3" y1="6" x2="21" y2="6" />
@@ -127,7 +130,11 @@ const Header = () => {
 
           <div className="mobile-nav-link">Community</div>
 
-          <a href="/?auth=login" className="mobile-signin-button">Sign in</a>
+          <Link to="/signin">
+           <div  className="mobile-signin-button">
+                  Sign in
+            </div> 
+          </Link>
         </nav>
       </div>
     </header>
