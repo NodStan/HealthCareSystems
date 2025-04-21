@@ -28,7 +28,7 @@ const Header = () => {
                 <Link to="/articles" className="nav-link"><p>Health Topics</p></Link>
                 <Link to="/health-search" className="nav-link"><p>Search Conditions</p></Link>
                 <div className="dropdown">
-                  <p className="nav-link dropdown-trigger"><p>Health Tools</p></p>
+                  <div className="nav-link dropdown-trigger"><p>Health Tools</p></div>
                   <div className="dropdown-menu">
                     <Link to="/symptom-checker" className="dropdown-item">Symptom Checker</Link>
                     <Link to="/health-calculators" className="dropdown-item">Health Calculators</Link>

@@ -7,7 +7,8 @@ import HealthTools from './components/HealthTools';
 import Community from './components/Community';
 import Assistant from './components/Assistant';
 import Hero from './components/Hero';
-import Signin from './Pages/Signin';
+import Signin from './Pages/AuthModal';
+import Login from './Pages/LoginForm';
 import './App.css';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/community" element={<Community />} />
           <Route path="/assistant" element={<Assistant />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
