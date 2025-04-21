@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import { useDarkMode } from './DarkModeContext';
+import AuthModal from '../Pages/AuthModal';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [signinOpen, setSigninOpen] = useState(false);
   const [query, setQuery] = useState('');
   const location = useLocation();
   const { darkMode, toggleTheme } = useDarkMode();
@@ -19,17 +21,14 @@ const Header = () => {
     setQuery('');
   };
 
+  const openSignin = () => setSigninOpen(true);
+  const closeSignin = () => setSigninOpen(false);
+
   const isActive = (path) => location.pathname === path;
   const isHealthToolsActive = () =>
-    [
-      '/symptom-checker',
-      '/health-calculators',
-      '/nutrition-guide',
-      '/exercise-library',
-      '/emergency-guide',
-    ].some((toolPath) => location.pathname.startsWith(toolPath));
+    ['/symptom-checker', '/health-calculators', '/nutrition-guide', '/exercise-library', '/emergency-guide']
+      .some((toolPath) => location.pathname.startsWith(toolPath));
 
-  // Dummy search results for demonstration
   const suggestions = [
     'Cardiovascular Health',
     'Diabetes Management',
@@ -39,7 +38,6 @@ const Header = () => {
     'Preventive Care',
   ];
 
-  // Filter results based on query
   const filteredSuggestions = suggestions.filter(item =>
     item.toLowerCase().includes(query.toLowerCase())
   );
@@ -85,9 +83,9 @@ const Header = () => {
                 </svg>
               </div>
 
-              <button type="button" aria-pressed="false" aria-label="Toggle theme" className="theme-toggle" onClick={toggleTheme}>
+              <button type="button" aria-label="Toggle theme" className="theme-toggle" onClick={toggleTheme}>
                 {darkMode ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="moon-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                   </svg>
                 ) : (
@@ -98,7 +96,7 @@ const Header = () => {
                 )}
               </button>
 
-              <Link to="/signin" className="signin-button">Sign in</Link>
+              <button className="signin-button" onClick={openSignin}>Sign in</button>
 
               <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
                 <svg xmlns="http://www.w3.org/2000/svg" className="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -112,7 +110,7 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''} ${darkMode ? 'dark-mode' : ''}`}>
         <div className="mobile-menu-top">
           <Link to="/" className="logo-link">
@@ -121,7 +119,7 @@ const Header = () => {
           </Link>
 
           <div className="mobile-icons">
-            <button type="button" aria-pressed="false" aria-label="Toggle theme" className="theme-toggle" onClick={toggleTheme}>
+            <button type="button" aria-label="Toggle theme" className="theme-toggle" onClick={toggleTheme}>
               {darkMode ? (
                 <svg xmlns="http://www.w3.org/2000/svg" className="night-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 1 0 9.79 9.79z" />
@@ -142,7 +140,6 @@ const Header = () => {
             </div>
 
             <button className="mobile-close" onClick={closeMenu}>X</button>
-            <Link to="/signin" className="mobile-signin-button">Sign in</Link>
           </div>
         </div>
 
@@ -159,62 +156,59 @@ const Header = () => {
           <Link to="/emergency-guide" className="mobile-sub-link">Emergency Guide</Link>
 
           <Link to="/community-forum" className={`mobile-nav-link ${isActive('/community-forum') ? 'active-link' : ''}`}>Community</Link>
-          <Link to="/signin" className="mobile-signin-button">Sign in</Link>
         </nav>
       </div>
 
       {/* Search Popup */}
       {dialogOpen && (
-  <div className="search-popup-overlay">
-    <div className="search-popup">
-      <div className="popup-header">
-        <div className="search-input-container">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search health topics..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button onClick={closeDialog} className="close-popup"><svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="lucide lucide-x h-4 w-4"
-    >
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg></button>
-        </div>
-      </div>
-
-      {/* Search Results */}
-      <div className="search-results">
-        <div className="topic-cover">
-        <p className='topic'>Health Topics</p>
-        </div>
-        
-        {filteredSuggestions.length > 0 ? (
-          filteredSuggestions.map((suggestion, index) => (
-            <div key={index} className="search-result-item">
-              {suggestion}
+        <div className="search-popup-overlay">
+          <div className="search-popup">
+            <div className="popup-header">
+              <div className="search-input-container">
+                <input
+                  type="text"
+                  className="search-input"
+                  placeholder="Search health topics..."
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                <button onClick={closeDialog} className="close-popup">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
-          ))
-        ) : (
-          <div className="no-results">No results found</div>
-        )}
-      </div>
-    </div>
-  </div>
-)}
 
+            <div className="search-results">
+              <div className="topic-cover">
+                <p className="topic">Health Topics</p>
+              </div>
 
+              {filteredSuggestions.length > 0 ? (
+                filteredSuggestions.map((suggestion, index) => (
+                  <div key={index} className="search-result-item">
+                    {suggestion}
+                  </div>
+                ))
+              ) : (
+                <div className="no-results">No results found</div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Sign In Modal */}
+      {signinOpen && (
+        <div className="signin-overlay">
+          <AuthModal
+            isOpen={signinOpen}
+            onClose={closeSignin}
+          />
+        </div>
+      )}
     </header>
   );
 };

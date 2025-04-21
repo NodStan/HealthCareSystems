@@ -1,5 +1,6 @@
 // SearchPopup.jsx
 import React, { useState } from 'react';
+import './Header.css'; 
 
 const SearchPopup = ({ onClose }) => {
   const [query, setQuery] = useState('');

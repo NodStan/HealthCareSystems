@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import { RiCloseLine } from "react-icons/ri";
 
-export default function AuthHeader({ isLogin, setIsLogin }) {
+export default function AuthHeader({ isLogin, setIsLogin, onClose }) {
   return (
     <div className="auth-modal-header">
       <div className="auth-tab-wrapper">
@@ -18,8 +18,12 @@ export default function AuthHeader({ isLogin, setIsLogin }) {
           Register
         </button>
       </div>
-      <RiCloseLine size={24} color="#000" className="auth-close-icon" />
-
+      <RiCloseLine
+        size={24}
+        onClick={onClose}
+        color="#000"
+        className="auth-close-icon"
+      />
     </div>
   );
 }

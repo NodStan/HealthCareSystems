@@ -7,7 +7,6 @@ import HealthTools from './components/HealthTools';
 import Community from './components/Community';
 import Assistant from './components/Assistant';
 import Hero from './components/Hero';
-import Signin from './Pages/Signin';
 import Footer from './components/Footer';
 import Signin from './Pages/AuthModal';
 import Login from './Pages/LoginForm';
@@ -19,6 +18,7 @@ import HealthCalculators from './components/Health-tools-components/HealthCalcul
 import NutritionGuide from './components/Health-tools-components/NutritionGuide';
 import EmergencyGuide from './components/Health-tools-components/EmergencyGuide';
 import ExerciseLibrary from './components/Health-tools-components/ExerciseLibrary';
+import './components/Hero-components/MainHero.css';
 
 const App = () => {
   return (
