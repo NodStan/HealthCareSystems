@@ -9,6 +9,8 @@ import Assistant from './components/Assistant';
 import Hero from './components/Hero';
 import Signin from './Pages/Signin';
 import Footer from './components/Footer';
+import Signin from './Pages/AuthModal';
+import Login from './Pages/LoginForm';
 import './App.css';
 import { DarkModeProvider } from './components/DarkModeContext';
 import { OverlayProvider } from './components/OverlayContext'; // Import OverlayProvider
@@ -39,7 +41,7 @@ const App = () => {
                 <Route path="/nutrition-guide" element={<NutritionGuide />} />
                 <Route path="/exercise-library" element={<ExerciseLibrary />} />
                 <Route path="/emergency-guide" element={<EmergencyGuide />} />
-                
+                <Route path="/login" element={<Login />} />
               </Routes>
             </div>
             <Footer />
