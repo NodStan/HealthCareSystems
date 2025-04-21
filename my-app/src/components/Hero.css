@@ -1,94 +1,86 @@
-/* ===============================
-    HERO CONTAINER & LAYOUT
-================================== */
 .hero-container {
     margin: 0;
     display: block;
+    background-color: white;
+  color: #020817;
   }
 
-
-
-  .hero-wrapper{
-    /* width: 70%; */
-    display: flex;
-    justify-content: center;
-    margin: 0w;
+  .hero-container.dark {
+    background-color: #121212;
+    color: #f0f0f0;
   }
+
+  .hero-container.overlay-open {
+    /* You can adjust these properties based on your design */
+    filter: blur(5px);
+    pointer-events: none; /* Disable interaction with the hero section */
+  }
+  
+  .overlay-open .hero-container {
+    position: relative;
+    z-index: 999; /* Ensure the overlay appears above the hero content */
+  }
+  
   
   .hero-inner {
     padding: 2.5rem 1rem;
-    /* max-width: 1200px; */
-    width: 70%;
-    margin: 0 auto;
-    
+    width: 60%;    
   }
   
-  .hero-content {
-    /* position: relative; */
-    padding-bottom: 2rem;
-    background-color: var(--background);
-    transition: background-color 0.3s;
-    display: flex;
-    justify-content: center;
-    width: 70%;
-  }
-  
-  .hero-shape {
-    display: none;
-  }
 
-  .hero-image{
-    width: 90% 100%;
-    height: auto;
-    background-color: red;
-    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+.health-topic-container {
+  text-align: center;
+  display: block;
+}
+
+.health-topic-title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #111827; 
+}
+
+@media (min-width: 640px) {
+  .health-topic-title {
+    font-size: 2.25rem;
   }
-  
-  @media (min-width: 1024px) {
-    .hero-shape {
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 0;
-      inset-y: 0;
-      height: 100%;
-      width: 12rem; /* 48 in Tailwind = 12rem */
-      color: var(--background);
-      transform: translateX(50%);
-      transition: color 0.3s ease;
-    }
-  
-    /* Optional: if you have a dark theme variable */
-    body.dark .hero-shape {
-      color: var(--card);
-    }
+}
+
+.health-topic-description {
+  margin-top: 12px;
+  max-width: 672px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.25rem;
+  color: #6b7280;
+}
+
+@media (min-width: 640px) {
+  .health-topic-description {
+    margin-top: 16px;
   }
-  
-  /* ===============================
-      HERO TEXT SECTION
-  ================================== */
-  .hero-text {
-    text-align: center;
-  }
-  
-  @media (min-width: 1024px) {
-    .hero-text {
-      text-align: left;
-    }
-  }
+}
+
   
   .hero-heading {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 800;
     color: var(--foreground);
     transition: color 0.3s;
+  }
 
+  .dark-mode {
+    background-color: #121212;
+    color: white;
   }
   
   .block {
     display: block;
     font-size: 4rem;
     color: black;
+  }
+
+  .block .dark{
+    color: white;
   }
   
   .highlighted {
@@ -102,7 +94,6 @@
     line-height: 1.75rem;
     color: #64748B;
     max-width: 600px;
-    margin-left: auto;
     margin-right: auto;
     transition: color 0.3s;
   }
@@ -113,9 +104,6 @@
     }
   }
   
-  /* ===============================
-      HERO FEATURES
-  ================================== */
   .hero-features {
     margin-top: 1.25rem;
     display: flex;
@@ -130,6 +118,10 @@
     font-size: 1rem;
     color: #020817;
   }
+
+  .feature-item.dark-features {
+    color: #f0f0f0;
+  }
   
   .feature-icon {
     width: 20px;
@@ -138,9 +130,6 @@
     margin-right: 0.5rem;
   }
   
-  /* ===============================
-      HERO BUTTONS
-  ================================== */
   .hero-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -175,7 +164,6 @@
   }
   
   .search-button:hover {
-    /* background-color: #1d4ed8; */
     color: #ffffff;
   }
   
@@ -193,8 +181,6 @@
     height: 20px;
     margin-right: 8px;
   }
-  
-  /* Responsive Buttons */
   @media (min-width: 640px) {
     .hero-buttons {
       justify-content: flex-start;
@@ -216,9 +202,6 @@
     }
   }
   
-  /* ===============================
-      HERO GRID
-  ================================== */
   .hero-grid {
     margin-top: 1.5rem;
     display: grid;
@@ -266,25 +249,23 @@
     }
   }
   
-  /* ===============================
-      HERO IMAGE
-  ================================== */
+  
   .hero-image {
     width: 100%;
-    height: 14rem; /* Default height */
+    height: 14rem; 
     object-fit: cover;
     transition: transform 0.5s ease-in-out;
   }
   
   @media (min-width: 640px) {
     .hero-image {
-      height: 18rem; /* For small screens */
+      height: 18rem; 
     }
   }
   
   @media (min-width: 768px) {
     .hero-image {
-      height: 24rem; /* For medium screens */
+      height: 24rem;
     }
   }
   
@@ -298,10 +279,7 @@
   .hero-image:hover {
     transform: scale(1.05);
   }
-  
-  /* ===============================
-      CALL-TO-ACTION (CTA)
-  ================================== */
+
   .cta-section {
     margin-top: 16px;
     animation: fadeIn 0.6s ease forwards;
@@ -339,9 +317,6 @@
     margin-left: 4px;
   }
   
-  /* ===============================
-      ANIMATIONS
-  ================================== */
   @keyframes slide-up {
     from {
       opacity: 0;
@@ -409,8 +384,8 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
   }
@@ -426,61 +401,62 @@
   }
   
   .icon-container {
-    margin-bottom: 1rem; /* mb-4 */
-    background-color: #b6d5f6; /* Health Light Blue */
-    border-radius: 50%; /* rounded-full */
-    width: 4rem; /* w-16 */
-    height: 4rem; /* h-16 */
+    margin-bottom: 1rem;
+    background-color: #b6d5f6;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
   .icon-containers {
-    margin-bottom: 1rem; /* mb-4 */
-    background-color: #b6d5f6; /* Health Light Blue */
-    border-radius: 50%; /* rounded-full */
-    width: 4rem; /* w-16 */
-    height: 4rem; /* h-16 */
+    margin-bottom: 1rem;
+    background-color: #b6d5f6;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: left;
   }
-
+  
   .icon-heart {
-    width: 2rem; /* h-8 w-8 */
+    width: 2rem;
     height: 2rem;
-    color: #3b82f6; /* Health Blue */
+    color: #3b82f6;
   }
   
   .card-title {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: bold; /* font-bold */
-    color: #1f2937; /* text-gray-900 */
-    margin-bottom: 0.5rem; /* mb-2 */
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
   }
   
   .card-description {
-    color: #4b5563; /* text-gray-600 */
+    color: #4b5563;
   }
   
   .card-footer {
     padding: 0.75rem 1.5rem; 
     width: 100%;
-    background-color: #b6d5f6; /* Health Light Blue */
+    background-color: #b6d5f6;
   }
-
+  
   .card-footers {
     padding: 0.75rem 1.5rem 1rem 4.5rem; 
     width: 100%;
-    background-color: #b6d5f6; /* Health Light Blue */
+    background-color: #b6d5f6;
   }
   
   .explore-text {
-    color: #3b82f6; /* Health Blue */
-    font-weight: 600; /* font-semibold */
+    color: #3b82f6;
+    font-weight: 600;
   }
+  
 
   .healthhub-container {
     max-width: 1280px;
@@ -563,35 +539,36 @@
   
   .health-tools-container {
     text-align: center;
-    margin-bottom: 3rem; /* equivalent to mb-12 */
+    margin-bottom: 3rem;
   }
   
   .health-tools-title {
-    font-size: 1.875rem; /* 3xl */
+    font-size: 1.875rem;
     font-weight: 800;
-    color: #1f2937; /* text-gray-900 */
+    color: #1f2937;
   }
   
   @media (min-width: 640px) {
     .health-tools-title {
-      font-size: 2.25rem; /* 4xl */
+      font-size: 2.25rem;
     }
   }
   
   .health-tools-description {
-    margin-top: 0.75rem; /* mt-3 */
-    max-width: 42rem; /* max-w-2xl */
+    margin-top: 0.75rem;
+    max-width: 42rem;
     margin-left: auto;
     margin-right: auto;
-    font-size: 1.25rem; /* text-xl */
-    color: #6b7280; /* text-gray-500 */
+    font-size: 1.25rem;
+    color: #6b7280;
   }
   
   @media (min-width: 640px) {
     .health-tools-description {
-      margin-top: 1rem; /* sm:mt-4 */
+      margin-top: 1rem;
     }
   }
+  
   
   .feature-grid {
     display: grid;
@@ -670,21 +647,21 @@
   .pie-chart-icon {
     width: 48px;
     height: 48px;
-    color: #0070f3; /* replace with your health-blue color code */
+    color: #0070f3;
     margin-bottom: 16px;
   }
   
   .file-text-icon {
     width: 48px;
     height: 48px;
-    color: #0070f3; /* replace with your health-blue color code */
+    color: #0070f3;
     margin-bottom: 16px;
   }
   
   .user-icon {
     width: 48px;
     height: 48px;
-    color: #0070f3; /* Replace with your health-blue color code */
+    color: #0070f3;
     margin-bottom: 16px;
   }
   
@@ -765,11 +742,11 @@
   }
   
   .avatar.blue {
-    background-color: #2563eb; /* Health Blue */
+    background-color: #2563eb;
   }
   
   .avatar.green {
-    background-color: #10b981; /* Health Green */
+    background-color: #10b981;
   }
   
   .user-details {
@@ -791,36 +768,37 @@
   }
   
   .healthhub-container {
-  text-align: center;
-  margin-bottom: 3rem; /* equivalent to mb-12 */
-}
-
-.healthhub-title {
-  font-size: 1.875rem; /* equivalent to text-3xl */
-  font-weight: 800;
-  color: #1f2937; /* equivalent to text-gray-900 */
-}
-
-@media (min-width: 640px) {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
   .healthhub-title {
-    font-size: 2.25rem; /* sm:text-4xl */
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: #1f2937;
   }
-}
-
-.healthhub-description {
-  margin-top: 0.75rem; /* mt-3 */
-  max-width: 42rem; /* max-w-2xl */
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.25rem; /* text-xl */
-  color: #6b7280; /* text-gray-500 */
-}
-
-@media (min-width: 640px) {
+  
+  @media (min-width: 640px) {
+    .healthhub-title {
+      font-size: 2.25rem;
+    }
+  }
+  
   .healthhub-description {
-    margin-top: 1rem; /* sm:mt-4 */
+    margin-top: 0.75rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.25rem;
+    color: #6b7280;
   }
-}
+  
+  @media (min-width: 640px) {
+    .healthhub-description {
+      margin-top: 1rem;
+    }
+  }
+  
 
 .steps-container {
     position: relative;
@@ -876,7 +854,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 9999px;
-    background-color: #1E88E5; /* bg-health-blue */
+    background-color: #1E88E5;
     color: white;
     font-size: 1.25rem;
     font-weight: bold;
@@ -898,7 +876,7 @@
 
   .call-to-action {
     padding: 3rem 0;
-    background-color: #1E88E5; /* health-blue */
+    background-color: #1E88E5;
   }
   
   .cta-content {
@@ -986,7 +964,7 @@
   .footer-wrapper{
     display: flex;
     justify-content: center;
-    background-color: #0d0d0d;
+    background-color: #1F2937;
   }
 
   .footer {
@@ -1000,11 +978,6 @@
     display: flex;
     justify-content: space-between;
     text-align: left;
-    /* width: 70%; */
-  }
-
-  .bottom-footer{
-    /* width: 70%; */
   }
   
   .footer-logo-section {
@@ -1070,9 +1043,9 @@
   }
   
   .footer-heading {
-    font-size: 1.125rem; /* text-lg */
-    font-weight: 600; /* font-semibold */
-    margin-bottom: 1rem; /* mb-4 */
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
   }
   
   .footer-links {
@@ -1081,54 +1054,27 @@
   }
   
   .footer-links li {
-    margin-bottom: 0.5rem; /* space-y-2 */
+    margin-bottom: 0.5rem;
   }
   
   .footer-link {
-    color: #d1d5db; /* text-gray-300 */
+    color: #d1d5db;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   
   .footer-link:hover {
-    color: #ffffff; /* hover:text-white */
+    color: #ffffff;
   }
-
+  
   .footer-quick-links {
     grid-column: span 1;
   }
   
-  .footer-heading {
-    font-size: 1.125rem; /* text-lg */
-    font-weight: 600; /* font-semibold */
-    margin-bottom: 1rem; /* mb-4 */
+  .text-health-blue {
+    color: #0062cc;
   }
   
-  .footer-links {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .footer-links li {
-    margin-bottom: 0.5rem; /* space-y-2 */
-  }
-  
-  .footer-link {
-    color: #d1d5db; /* text-gray-300 */
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-link:hover {
-    color: #ffffff; /* hover:text-white */
-  }
-  
-  /* Define your health-blue color */
-.text-health-blue {
-    color: #0062cc; /* Adjust the color as per your design */
-  }
-  
-  /* Adjustments for icon size */
   .h-6 {
     height: 1.5rem;
   }
@@ -1140,27 +1086,24 @@
   .mr-2 {
     margin-right: 0.5rem;
   }
-
-  .md:col-span-1{
+  
+  .md:col-span-1 {
     gap: 10;
   }
   
-  /* Spacing for the list items */
   .space-y-4 li {
     margin-bottom: 1rem;
     text-align: left;
   }
   
-  /* Flex for aligning the icons and text */
   .flex {
     display: flex;
     align-items: center;
     text-align: left;
   }
   
-  /* Styles for the heading */
   .text-lg {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
   }
   
   .font-semibold {
@@ -1169,27 +1112,24 @@
   
   .mb-4 {
     margin-bottom: 1rem;
-    /* margin-left: 11%; */
   }
   
-  /* Styling for the footer */
-.mt-8 {
+  .mt-8 {
     margin-top: 2rem;
   }
   
   .border-t {
-    border-top: 1px solid #4a4a4a; /* Use a gray shade similar to border-gray-700 */
+    border-top: 1px solid #4a4a4a;
   }
   
   .border-gray-700 {
-    border-color: #4a4a4a; /* Dark gray */
+    border-color: #4a4a4a;
   }
   
   .pt-8 {
     padding-top: 2rem;
   }
   
-  /* Flexbox layout for footer */
   .flex {
     display: flex;
   }
@@ -1207,18 +1147,18 @@
   }
   
   .text-base {
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
   }
   
   .text-gray-400 {
-    color: #9ca3af; /* Gray color similar to text-gray-400 */
+    color: #9ca3af;
   }
   
   .mb-4 {
     margin-bottom: 1rem;
     margin-left: 11%;
   }
-
+  
   .mbs-4 {
     margin-bottom: 1rem;
   }
@@ -1227,10 +1167,10 @@
     margin-bottom: 0;
   }
   
-  /* Styling for the links */
   .space-x-6 {
-    gap: 1.5rem; /* Add space between each link */
+    gap: 1.5rem;
   }
+  
   
   .text-gray-400 {
     color: #9ca3af;

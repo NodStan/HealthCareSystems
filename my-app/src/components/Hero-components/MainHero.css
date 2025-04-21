@@ -1,0 +1,306 @@
+.main-hero{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-hero.dark {
+    background-color: #0f172a;
+  }
+  
+  .main-hero.dark .hero-heading {
+    color: #ffffff;
+  }
+  
+  .main-hero.dark .hero-description {
+    color: #cccccc;
+  }
+  
+  .main-hero.dark .feature-item span {
+    color: #ffffff;
+  }
+  
+  .main-hero.dark .hero-label {
+    color: #ffffff;
+  }
+  
+  .main-hero.dark .cta-link {
+    color: #ffffff;
+  }
+  
+  .main-hero.dark .search-button,
+  .main-hero.dark .secondary-button {
+    color: #ffffff;
+  }
+  
+
+
+.hero-wrapper {
+    display: flex;
+    padding: auto;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 14%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .hero-wrapper.dark {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+  
+  .hero-wrapper.dark .button-wrapper.secondary a {
+    background-color: #444;
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-wrapper {
+        flex-direction: row;
+    }
+  
+    body.dark .hero-shape {
+      color: var(--card);
+    }
+  }
+  
+  .hero-inner {
+    padding: 2.5rem 1rem;
+    width: 70%;
+  }
+  
+  .hero-content {
+    background-color: var(--background);
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    width: 70%;
+  }
+  
+  .hero-shape {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-shape {
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      inset-y: 0;
+      height: 100%;
+      width: 12rem;
+      color: var(--background);
+      transform: translateX(50%);
+      transition: color 0.3s ease;
+    }
+  
+    body.dark .hero-shape {
+      color: var(--card);
+    }
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-text {
+      text-align: left;
+    }
+  }
+  
+  .hero-heading {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--foreground);
+    transition: color 0.3s;
+  }
+  
+  .dark-mode {
+    background-color: #121212;
+    color: white;
+  }
+  
+  .highlighted {
+    color: #0EA2F1;
+    font-size: 4rem;
+  }
+  
+  .hero-description {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #64748B;
+    max-width: 600px;
+    margin-right: auto;
+    transition: color 0.3s;
+  }
+  
+  .hero-features {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: left;
+  }
+  
+  .feature-item {
+    display: flex;
+    justify-content: left;
+    font-size: 1rem;
+    color: #020817;
+  }
+  
+  .feature-item.dark-features {
+    color: #f0f0f0;
+  }
+  
+  .feature-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+    margin-right: 0.5rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 32px;
+    animation: slide-up 0.6s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+  
+  .button-wrapper {
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .hero-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+  
+  .search-button {
+    color: #ffffff;
+    background-color: #0EA2F1;
+  }
+  
+  .search-button:hover {
+    color: #ffffff;
+  }
+  
+  .secondary-button {
+    color: #0EA2F1;
+    background-color: #ECF5FB;
+  }
+  
+  .secondary-button:hover {
+    background-color: #C9E8FA;
+  }
+  
+  .hero-buttons svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  
+  @media (min-width: 640px) {
+    .hero-buttons {
+      justify-content: flex-start;
+    }
+  
+    .hero-buttons .secondary {
+      margin-left: 12px;
+    }
+  
+    .hero-buttons a {
+      padding: 16px 40px;
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 639px) {
+    .hero-buttons .secondary {
+      margin-top: 12px;
+    }
+  }
+  
+  .hero-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .hero-grid {
+      gap: 1rem;
+    }
+  }
+  
+  .hero-item {
+    padding: 0.5rem;
+    background-color: rgba(0, 123, 255, 0.05);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #000;
+    background-color: #ECF5FB;
+  }
+  
+  @media (min-width: 640px) {
+    .hero-label {
+      font-size: 0.875rem;
+    }
+  }
+
+  .hero-section{
+    width: 100%;
+  }
+  
+  .hero-image {
+    height: 14rem;
+    object-fit: cover;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .hero-image:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (min-width: 640px) {
+    .hero-image {
+      height: 18rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .hero-image {
+      height: 24rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  

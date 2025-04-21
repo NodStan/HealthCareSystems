@@ -8,9 +8,26 @@
     height: 7%;
     display: flex;
     justify-content: center;
-    align-items: center;            
+    align-items: center;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .header.dark-mode {
+    background: #121212;
+    color: #eee;
+  }
+
+  .header.dark-mode .nav-links a,
+  .header.dark-mode .dropdown,
+  .header.dark-mode .header-right,
+  .mobile-menu.dark-mode .mobile-nav a,
+  .mobile-menu.dark-mode .mobile-sub-link,
+  .mobile-menu.dark-mode .mobile-nav-link {
+    color: #eee;
   }
   
+  
+
   .headercont {
     width: 60%;
     margin: 0 auto;
@@ -32,6 +49,7 @@
     gap: 25px;
     align-items: center;
     height: 100%;
+    transition: color 0.3s;
 
   }
   
@@ -42,12 +60,14 @@
     font-size: 14px;
     height: 70%;
     margin-top: 10px;
+    transition: color 0.3s;
   }
   
   .nav-links .active {
     font-weight: bold;
     /* color: #333; */
     color: black;
+    transition: color 0.3s;
   }
   
   .header-icons {
@@ -93,6 +113,53 @@
     font-size: 14px;
     color: #333;
   }
+
+  .search-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  .search-dialog-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .search-dialog.dark-mode .search-dialog-content {
+    background: #222;
+    color: #fff;
+  }
+  
+  .close-dialog {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: inherit;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  
   /* General Nav Styling */
 .header-nav {
     /* background-color: var(--background); */
@@ -177,9 +244,24 @@
     color: #333;
     text-decoration: none;
     transition: all 0.2s ease;
-}
+  }
+
+  .navs-link {
+    padding: 0.9rem 0;
+    margin-bottom: 7px;
+    border-bottom: 2px solid transparent;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 14px;
+  }
+
+  .active-link {
+    border-bottom: 2px solid #007bff;
+    padding: 0;
+  }
   
-  .nav-link:hover,
+  .nav-link:hover,.navs-link:hover,
   .nav-link.active {
     /* color: var(--foreground); */
     border-color: #00aaff;
@@ -189,10 +271,16 @@
   .dropdown {
     position: relative;
     margin-top: 7px;
+    color: #333;
+    text-decoration: none;
+    
+    
   }
   
   .dropdown-trigger {
     cursor: pointer;
+    color: #333;
+    font-weight: 500;
   }
   
   .dropdown-menu {
@@ -200,8 +288,8 @@
     top: 100%;
     left: 0;
     width: 12rem;
-    /* background-color: var(--background); */
-    background-color: #F1F5F9;
+    background: #fff;
+    transition: background 0.3s;
     border-radius: 0.375rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -210,6 +298,10 @@
     z-index: 10;
     transition: all 0.2s ease-in-out;
     pointer-events: none;
+  }
+
+  .header.dark-mode .dropdown-menu {
+    background: #1e1e1e;
   }
   
   .dropdown:hover .dropdown-menu {
@@ -237,6 +329,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    transition: color 0.3s;
   }
   
   .icon-button {
@@ -255,7 +348,7 @@
   }
 
   .signin-button {
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     background-color: #0EA2F1;
     color: white;
     font-size: 0.875rem;
@@ -263,9 +356,10 @@
     border: none;
     border-radius: 0.375rem;
     text-decoration: none;
+    /* height: 50%; */
     transition: background-color 0.2s ease;
   }
-  
+
   .signin-button:hover {
     background-color: #25AAF2;
     color: white;
@@ -293,15 +387,22 @@
     font-size: 14px;
     transition: background 0.3s ease, color 0.3s ease;
     cursor: pointer;
+    border: none;
   }
   
   .theme-toggle:hover {
-    background-color: #F1F5F9;
-    color: #64748B;
-    border-color: transparent;
+    /* background-color: #F1F5F9; */
+    /* color: #64748B; */
+    /* border-color: transparent; */
   }
 
   .sun-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .moon-icon {
     width: 1.2rem;
     height: 1.2rem;
     transition: transform 0.3s ease;
@@ -362,6 +463,14 @@
   /* Hide mobile menu by default */
 .mobile-menu {
     display: none;
+    background: #fff;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+  }
+
+  .mobile-menu.dark-mode {
+    background: #121212;
+    color: #eee;
   }
 
   .icon-close{
@@ -369,9 +478,9 @@
     cursor: pointer;
   }
 
-  /* .menu-toggle{
+  .menu-toggle{
     display: none;
-  } */
+  }
   
   /* Mobile only */
   @media (max-width: 768px) {
@@ -456,6 +565,7 @@
       flex-direction: column;
       gap: 1rem;
       text-align: left;
+      transition: color 0.3s;
       
     }
   
@@ -465,12 +575,14 @@
       font-size: 1rem;
       font-weight: 500;
       padding-left: 0.8rem;
+      transition: color 0.3s;
     }
   
     .mobile-nav-link.active {
       font-weight: bold;
       border-left: 4px solid #00aaff;
       padding-left: 0.5rem;
+      transition: color 0.3s;
     }
   
     .mobile-section-title {
@@ -485,6 +597,7 @@
       color: #64748b;
       text-decoration: none;
       font-size: 0.95rem;
+      transition: color 0.3s;
     }
   
     .mobile-signin-button {
@@ -507,4 +620,119 @@
       }
   }
   
-  
+/* Dimmed background */
+.search-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Search popup */
+.search-popup {
+  background: white;
+  width: 25%;
+  height: 37%;
+  /* padding: 20px; */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  border-color: transparent;
+}
+
+.search-popup .popup-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-popup .close-popup {
+  background: none;
+  border: none;
+  /* font-size: 18px; */
+  cursor: pointer;
+  color: #333;
+}
+
+.search-popup .search-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: none;
+  margin-left: 3%;
+  border-color: transparent;
+}
+
+/* Style for search results */
+.search-results {
+  margin-top: 10px;
+  overflow-y: auto;
+  color: #333;
+}
+
+.search-result-item {
+  padding: 10px;
+  /* border-bottom: 1px solid #ddd; */
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background-color: #0EA2F1;
+}
+
+/* No results message */
+.no-results {
+  padding: 10px;
+  color: #888;
+  text-align: center;
+}
+
+.topic-cover{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.topic{
+  font-size: 10px;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  font-weight: 900;
+}
+
+/* Flexbox for input and close button */
+.search-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-color: transparent;
+  border-radius: 4px 0 0 4px; /* Round left corners */
+}
+
+.close-popup {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 0 4px 4px 0; /* Round right corners */
+  padding-top: 25px;
+  cursor: pointer;
+  height: 100%; /* Makes button the same height as input */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

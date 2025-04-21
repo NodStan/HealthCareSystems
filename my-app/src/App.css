@@ -15,8 +15,19 @@
 }
 
 .container{
-  margin-top: 2%;
   background-color: white;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  margin-top: 3%;
+
 }
 
 .logo {
