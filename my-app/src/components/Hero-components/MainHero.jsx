@@ -5,7 +5,7 @@ import { useDarkMode } from '../DarkModeContext';
 import photo from '/src/components/Hero-components/photo.png';
 
 const MainHero = () => {
-  const { isDarkMode } = useDarkMode();
+  const { darkMode: isDarkMode } = useDarkMode();
 
   return (
     <div className={`main-hero ${isDarkMode ? 'dark' : ''}`}>
@@ -14,7 +14,7 @@ const MainHero = () => {
           className="hero-content"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }} // Add exit animation for backward scroll
+          exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.8 }}
         >
           <div className="hero-inner">
@@ -22,7 +22,7 @@ const MainHero = () => {
               className="hero-text"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 30 }} // Add exit animation for backward scroll
+              exit={{ opacity: 0, x: 30 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <h1 className="hero-heading">
@@ -40,7 +40,7 @@ const MainHero = () => {
                     key={text}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }} // Add exit animation for backward scroll
+                    exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ delay: 0.3 + index * 0.2, duration: 0.4 }}
                   >
                     <svg className="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#0EA2F1" strokeWidth="2">

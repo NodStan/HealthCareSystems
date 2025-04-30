@@ -1,12 +1,14 @@
 import React from 'react'
-import '../Hero.css'
+import './HealthhubContainer.css'
 import { Heart, Shield, Brain } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useDarkMode } from '../DarkModeContext';
 
 const HealthhubContainer = () => {
+  const { darkMode: isDarkMode } = useDarkMode();
   return (
     <div>
-      <div className="healthhub-container">
+      <div className={`healthhub-container ${isDarkMode ? 'dark' : ''}`}>
         <div className="text-center">
           <h2 className="heading">Why Choose HealthHub?</h2>
           <p className="subtext">

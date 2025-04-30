@@ -5,6 +5,40 @@
     margin-top: 2%;
 }
 
+@media (max-width: 768px) {
+  .symptom-checker {
+    margin-top: 10%;
+  }
+}
+
+.symptom-checker.dark{
+  background-color: #020817;
+}
+
+.symptom-checker.dark .symptom-checker-wrapper .symptom-checker-container .symptom-checker-title{
+  color: #ffffff;
+}
+
+.symptom-checker.dark .symptom-checker-wrapper .card-titles{
+  color: #ffffff;
+}
+
+.symptom-checker.dark .symptom-checker-wrapper .symptom-checker-container .symptom-checker-description{
+  color: #6b7280;
+}
+
+.symptom-checker.dark .symptom-checker-wrapper .progress-section span{
+  color: #6b7280;
+}
+
+.symptom-checker.dark .symptom-checker-wrapper .emergency-card-wrapper .card-text{
+  color: #6b7280;
+}
+
+.symptom-checker.dark .symptom-checker-wrapper .symptom-checker-container .label{
+  color: #6b7280;
+}
+
 .symptom-checker-wrapper{
     width: 45%;
     margin-bottom: 2rem;
@@ -158,6 +192,19 @@
     height: 20%;
     margin-bottom: 2%;
     /* margin-top: 3%; */
+  }
+
+  @media (max-width: 768px) {
+    .emergency-card-wrapper {
+      margin-bottom: 25%;
+      margin-top: 10%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .progress-section {
+      /* margin-bottom: 55%; */
+    }
   }
   
   .emergency-card {

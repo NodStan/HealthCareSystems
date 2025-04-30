@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../Hero.css'; // Assuming you have this CSS file for styles
+import './Testimonials.css';
+import { useDarkMode } from '../DarkModeContext';
 
 const Testimonials = () => {
+  const { darkMode: isDarkMode } = useDarkMode();
   return (
     <div>
-      <div className="container">
+      <div className={`container ${isDarkMode ? 'dark' : ''}`}>
         <div className="section-header">
           <h2>What Our Users Say</h2>
           <p>

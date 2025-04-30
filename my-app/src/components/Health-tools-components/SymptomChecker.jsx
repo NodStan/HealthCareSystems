@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 import { useDarkMode } from '../DarkModeContext';
 
 const SymptomChecker = () => {
+  const { darkMode: isDarkMode } = useDarkMode();
   return (
-    <div className='symptom-checker'>
+    <div className={`symptom-checker ${isDarkMode ? 'dark' : ''}`}>
       <motion.div 
         className="symptom-checker-wrapper"
         initial={{ opacity: 0, y: 30 }}

@@ -1,17 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../Hero.css';
+import './HealthToolsContainer.css';
+import { useDarkMode } from '../DarkModeContext';
 
 const HealthToolsContainer = () => {
+  const { darkMode: isDarkMode } = useDarkMode();
   return (
     <div>
-      <div className="health-tools-container">
+      <div className={`health-tools-container ${isDarkMode ? 'dark' : ''}`}>
         <h2 className="health-tools-title">Powerful Health Tools</h2>
         <p className="health-tools-description">
           Discover our complete suite of tools designed to help you manage and improve your health.
         </p>
       </div>
-      <div className="feature-grid-wrapper">
+      <div className={`feature-grid-wrapper ${isDarkMode ? 'dark' : ''}`}>
         <div className="feature-grid">
           <motion.div
             className="feature-card"

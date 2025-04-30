@@ -1,19 +1,21 @@
 import React from 'react'
-import '../Hero.css'
+import './HeroTopicsContainer.css'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useDarkMode } from '../DarkModeContext';
 
 const HeroTopicsContainer = () => {
+  const { darkMode: isDarkMode } = useDarkMode();
   return (
     <div>
-      <div className="health-topic-container">
+      <div className={`health-topic-container ${isDarkMode ? 'dark' : ''}`}>
         <h2 className="health-topic-title">Explore Health Topics</h2>
         <p className="health-topic-description">
           Discover reliable information on a wide range of health topics, curated by medical professionals.
         </p>
       </div>
 
-      <div className="health-topics-wrapper">
+      <div className={`health-topics-wrapper ${isDarkMode ? 'dark' : ''}`}>
         <div className="health-topics-container">
           
           <motion.div
@@ -23,7 +25,7 @@ const HeroTopicsContainer = () => {
             transition={{ duration: 1 }}
           >
             <Link to="/articles?category=cardiovascular" className="card-hover">
-              <div className="card-content">
+              <div className="card-contents">
                 <div className="icon-container">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +60,7 @@ const HeroTopicsContainer = () => {
             transition={{ duration: 1, delay: 0.2 }}
           >
             <Link to="/articles?category=diabetes" className="card-hover">
-              <div className="card-content">
+              <div className="card-contents">
                 <div className="icon-container">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +95,7 @@ const HeroTopicsContainer = () => {
             transition={{ duration: 1, delay: 0.4 }}
           >
             <Link to="/articles?category=mental-health" className="card-hover">
-              <div className="card-content">
+              <div className="card-contents">
                 <div className="icon-container">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +131,7 @@ const HeroTopicsContainer = () => {
             transition={{ duration: 1, delay: 0.6 }}
           >
             <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/articles?category=nutrition">
-              <div className="card-content px-6 py-8 flex-1">
+              <div className="card-contents px-6 py-8 flex-1">
                 <div className="icon-containers mbs-4 bg-health-light-blue rounded-full w-16 h-16 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-apple h-8 w-8 text-health-blue">
                     <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"></path>
@@ -140,7 +142,7 @@ const HeroTopicsContainer = () => {
                 <p className="card-description text-gray-600">Expert advice on balanced diets, nutritional needs, and healthy eating habits.</p>
               </div>
               <div className="card-footer">
-                <span className="explore-text">Explore →</span>
+                <span className="explore-texts">Explore →</span>
               </div>
             </Link>
           </motion.div>
@@ -152,7 +154,7 @@ const HeroTopicsContainer = () => {
             transition={{ duration: 1, delay: 0.8 }}
           >
             <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/articles?category=fitness">
-              <div className="card-content px-6 py-8 flex-1">
+              <div className="card-contents px-6 py-8 flex-1">
                 <div className="icon-container mbs-4 bg-health-light-blue rounded-full w-16 h-16 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-dumbbell h-8 w-8 text-health-blue">
                     <path d="M14.4 14.4 9.6 9.6"></path>
@@ -166,7 +168,7 @@ const HeroTopicsContainer = () => {
                 <p className="card-description text-gray-600">Exercise recommendations, workout plans, and physical activity guidelines for all ages.</p>
               </div>
               <div className="card-footer">
-                <span className="explore-text">Explore →</span>
+                <span className="explore-texts">Explore →</span>
               </div>
             </Link>
           </motion.div>
@@ -178,7 +180,7 @@ const HeroTopicsContainer = () => {
             transition={{ duration: 1, delay: 1 }}
           >
             <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/articles?category=preventive-care">
-              <div className="card-content px-6 py-8 flex-1">
+              <div className="card-contents px-6 py-8 flex-1">
                 <div className="icon-container mbs-4 bg-health-light-blue rounded-full w-16 h-16 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-apple h-8 w-8 text-health-blue">
                     <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"></path>
@@ -188,7 +190,7 @@ const HeroTopicsContainer = () => {
                 <p className="card-description text-gray-600">Guidance on screenings, vaccinations, and preventive health measures for better well-being.</p>
               </div>
               <div className="card-footer">
-                <span className="explore-text">Explore →</span>
+                <span className="explore-texts">Explore →</span>
               </div>
             </Link>
           </motion.div>

@@ -1,18 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../Hero.css'; // Assuming you have this CSS file for styles
+import './StepsWrapper.css';
+import { useDarkMode } from '../DarkModeContext';
+
 
 const StepsWrapper = () => {
+  const { darkMode: isDarkMode } = useDarkMode();
   return (
     <div>
-      <div className="healthhub-container">
+      <div className={`healthhub-container ${isDarkMode ? 'dark' : ''}`}>
         <h2 className="healthhub-title">How HealthHub Works</h2>
         <p className="healthhub-description">
           Our simple process to help you achieve better health outcomes
         </p>
       </div>
 
-      <div className="steps-wrapper">
+      <div className={`steps-wrapper ${isDarkMode ? 'dark' : ''}`}>
         <div className="steps-container">
           <div className="steps-line"></div>
           <div className="steps-grid">

@@ -17,12 +17,13 @@
   .header {
     height: 10%;
     z-index: 9999;
+    margin-bottom: 20%;
   }
 }
 
 /* Dark Mode */
 .header.dark-mode {
-  background: #121212;
+  background: #020817;
   color: #eee;
 }
 
@@ -72,6 +73,7 @@
   align-items: center;
   height: 100%;
   transition: color 0.3s;
+  margin-left: 30px;
 }
 
 .nav-links a {
@@ -306,7 +308,7 @@
   cursor: pointer;
 }
 
-/* Search Popup Overlay */
+/* Dimmed background for search popup */
 .search-popup-overlay {
   position: fixed;
   top: 0;
@@ -323,26 +325,27 @@
 /* Search Popup */
 .search-popup {
   background: white;
-  width: 25%;
-  height: 37%;
+  width: 30%;
+  height: 40%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .search-popup {
-    width: 90%;
+    width: 70%;
     height: 41%;
   }
+  
 }
 
-.popup-header {
+.search-popup .popup-header {
   display: flex;
   justify-content: flex-end;
 }
 
-.close-popup {
+.search-popup .close-popup {
   background: none;
   border: none;
   cursor: pointer;
@@ -358,7 +361,7 @@
   margin-left: 3%;
 }
 
-/* Search Results */
+/* Style for search results */
 .search-results {
   margin-top: 10px;
   overflow-y: auto;
@@ -371,7 +374,54 @@
 }
 
 .search-result-item:hover {
-  background-color: #0ea2f1;
+  background-color: #0EA2F1;
+}
+
+/* No results message */
+.no-results {
+  padding: 10px;
+  color: #888;
+  text-align: center;
+}
+
+.topic-cover {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 8px;
+}
+
+.topic {
+  font-size: 10px;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  font-weight: 900;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border-color: transparent;
+  border-radius: 4px 0 0 4px;
+}
+
+.close-popup {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+  padding-top: 25px;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* No Results */
