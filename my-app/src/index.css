@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  outline: none;
 }
 
 a {
@@ -28,6 +30,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  outline: none;
 }
 
 h1 {
@@ -45,6 +48,7 @@ button {
   /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
+  outline: none;
 }
 button:hover {
   border-color: #646cff;

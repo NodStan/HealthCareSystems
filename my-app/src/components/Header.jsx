@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import './NavbarMenu.css'; // Make sure to import NavbarMenu styles
+import './NavbarMenu.css';
 import { useDarkMode } from './DarkModeContext';
 import AuthModal from '../Pages/AuthModal';
-import NavbarMenu from './NavbarMenu'; // <-- Import your NavbarMenu component
+import NavbarMenu from './NavbarMenu';
+import { useAuth } from './AuthContext';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,6 +14,7 @@ const Header = () => {
   const [query, setQuery] = useState('');
   const location = useLocation();
   const { darkMode, toggleTheme } = useDarkMode();
+  const { isAuthenticated, signOut } = useAuth();
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
   const closeMenu = () => setMenuOpen(false);
@@ -44,6 +46,11 @@ const Header = () => {
     item.toLowerCase().includes(query.toLowerCase())
   );
 
+  const handleSignOut = () => {
+    signOut();
+    setSigninOpen(false); // Close the signin overlay when signing out
+  };
+
   return (
     <header className={`header ${darkMode ? 'dark-mode' : ''}`}>
       <nav className="header-nav">
@@ -68,10 +75,20 @@ const Header = () => {
                     <Link to="/symptom-checker" className="dropdown-item">Symptom Checker</Link>
                     <Link to="/health-calculators" className="dropdown-item">Health Calculators</Link>
                     <Link to="/nutrition-guide" className="dropdown-item">Nutrition Guide</Link>
-                    <Link to="/exercise-library" className="dropdown-item">Exercise Library</Link>
+                    {/* <Link to="/exercise-library" className="dropdown-item">Exercise Library</Link> */}
                     <Link to="/emergency-guide" className="dropdown-item">Emergency Guide</Link>
                   </div>
                 </div>
+
+                {isAuthenticated && (
+                  <div className={`dropdown ${isHealthToolsActive() ? 'active-links' : ''}`}>
+                  <p className="navs-link dropdown-trigger">My Health</p>
+                  <div className="dropdown-menu">
+                    <Link to="/health-dashboard" className="dropdown-item">Health Dashboard</Link>
+                    <Link to="/health-calculators" className="dropdown-item">Medication Tracker</Link>
+                  </div>
+                </div>
+                )}
               </div>
             </div>
 
@@ -96,7 +113,29 @@ const Header = () => {
                 )}
               </button>
 
-              <button className="signin-button" onClick={openSignin}>Sign in</button>
+              {isAuthenticated && (
+                  <Link to="/profile" className="profile-link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="grey"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="icon"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </Link>
+                )}
+
+              <button className="signin-button" onClick={isAuthenticated ? handleSignOut : openSignin}>
+                {isAuthenticated ? 'Sign Out' : 'Sign In'}
+              </button>
 
               <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
                 <svg 
@@ -121,7 +160,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Show NavbarMenu */}
         {menuOpen && (
           <div className="mobile-navbar-menu">
             <NavbarMenu />
@@ -129,7 +167,6 @@ const Header = () => {
         )}
       </nav>
 
-      {/* Search Popup */}
       {dialogOpen && (
         <div className="search-popup-overlay">
           <div className="search-popup">
@@ -170,12 +207,14 @@ const Header = () => {
         </div>
       )}
 
-      {/* Sign In Modal */}
-      {signinOpen && (
+      {signinOpen && !isAuthenticated && (
         <div className="signin-overlay">
           <AuthModal
             isOpen={signinOpen}
             onClose={closeSignin}
+            onSuccess={() => {
+              closeSignin();
+            }}
           />
         </div>
       )}

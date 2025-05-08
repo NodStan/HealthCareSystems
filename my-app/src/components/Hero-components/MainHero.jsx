@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './MainHero.css'
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion'
 import { useDarkMode } from '../DarkModeContext';
 import photo from '/src/components/Hero-components/photo.png';
+import AuthModal from '/src/Pages/AuthModal';
 
 const MainHero = () => {
   const { darkMode: isDarkMode } = useDarkMode();
+  const [signinOpen, setSigninOpen] = useState(false);
+
+  const openSignin = () => setSigninOpen(true);
+  const closeSignin = () => setSigninOpen(false);
 
   return (
     <div className={`main-hero ${isDarkMode ? 'dark' : ''}`}>
@@ -110,7 +116,7 @@ const MainHero = () => {
                 className="cta-section"
                 whileHover={{ y: -3 }}
               >
-                <a className="cta-link">
+                <a className="cta-link" onClick={openSignin}>
                   <svg className="cta-icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                     <circle cx="12" cy="7" r="4"></circle>
@@ -130,6 +136,15 @@ const MainHero = () => {
           <img className="hero-image" src={photo} alt="Hero" />
         </div>
       </div>
+
+      {signinOpen && (
+              <div className="signin-overlay">
+                <AuthModal
+                  isOpen={signinOpen}
+                  onClose={closeSignin}
+                />
+              </div>
+            )}
     </div>
   );
 }
