@@ -66,7 +66,7 @@ const Header = () => {
 
               <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
                 <Link to="/" className={`nav-link ${isActive('/') ? 'active-link' : ''}`}><p>Home</p></Link>
-                <Link to="/articles" className={`nav-link ${isActive('/articles') ? 'active-link' : ''}`}><p>Health Topics</p></Link>
+                <Link to="/health-topics" className={`nav-link ${isActive('/health-topics') ? 'active-link' : ''}`}><p>Health Topics</p></Link>
                 <Link to="/health-search" className={`nav-link ${isActive('/health-search') ? 'active-link' : ''}`}><p>Search Conditions</p></Link>
 
                 <div className={`dropdown ${isHealthToolsActive() ? 'active-links' : ''}`}>
