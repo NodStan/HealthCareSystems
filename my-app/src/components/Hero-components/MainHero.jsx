@@ -58,7 +58,7 @@ const MainHero = () => {
                 ))}
               </div>
 
-              <div className="hero-buttons">
+              <div className="hero-buttonss">
                 <motion.div 
                   className="button-wrapper"
                   whileHover={{ scale: 1.05 }}

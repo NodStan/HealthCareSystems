@@ -245,7 +245,7 @@
     margin: 0 auto 0.25rem auto;
   }
   
-  .hero-buttons {
+  .hero-buttonss {
     display: flex;
     justify-content: flex-start;
     margin-top: 32px;
@@ -254,11 +254,11 @@
     opacity: 0;
     width: 100%;
     /* justify-content: space-between; */
-    gap: 50px;
+    /* gap: 50px; */
   }
 
   @media (max-width: 768px) {
-    .hero-buttons {
+    .hero-buttonss {
       width: 100%;
       /* justify-content: flex-start; */
       display: block;
@@ -278,7 +278,7 @@
     }
   }
   
-  .hero-buttons a {
+  .hero-buttonss a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,7 +292,7 @@
   }
 
   @media (max-width: 768px) {
-    .hero-buttons a {
+    .hero-buttonss a {
       width: 100%;
     }
   }
@@ -317,25 +317,25 @@
     background-color: #C9E8FA;
   }
   
-  .hero-buttons svg {
+  .hero-buttonss svg {
     width: 20px;
     height: 20px;
     margin-right: 8px;
   }
   
   @media (min-width: 768px) {  
-    .hero-buttons .secondary {
+    .hero-buttonss .secondary {
       margin-left: 12px;
     }
   
-    .hero-buttons a {
-      /* padding: 16px 40px; */
+    .hero-buttonss a {
+      padding: 16px 40px;
       font-size: 18px;
     }
   }
   
   @media (max-width: 639px) {
-    .hero-buttons .secondary {
+    .hero-buttonss .secondary {
       margin-top: 12px;
     }
   }

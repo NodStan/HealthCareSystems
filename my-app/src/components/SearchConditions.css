@@ -34,12 +34,15 @@
   .input-wrapper {
     width: 100%;
     display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
   }
   
   .searchs-icons {
     position: absolute;
     left: 12px;
-    top: 50%;
+    top: 44%;
     transform: translateY(-50%);
     color: #6b7280;
     height: 20px;
@@ -56,11 +59,11 @@
     color: #1f2937;
     background-color: #ffffff;
     outline: none;
-
   }
   
   .search-buttons {
-    height: 52.5px;
+    height: 50px;
+    margin: 0;
     background-color: #0ea2f1;
     color: white;
     font-size: 0.875rem;
@@ -74,8 +77,19 @@
   
   .search-buttons:hover {
     background-color: #2563eb;
+  }
+  
+  /* Remove the border on mouse click */
+  .search-buttons:focus {
     outline: none;
   }
+  
+  /* Add a subtle outline only on keyboard focus (accessible) */
+  .search-buttons:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+  
   
   .search-info {
     text-align: center;

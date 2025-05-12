@@ -56,7 +56,7 @@
 .logo-primary {
   font-weight: bold;
   font-size: 1.5rem;
-  color: var(--primary);
+  /* color: var(--primary); */
 }
 
 .logo-secondary {
@@ -455,8 +455,19 @@
 
 .signin-button:hover {
   background-color: #25aaf2;
+}
+
+/* Remove outline on mouse click */
+.signin-button:focus {
   outline: none;
 }
+
+/* Add visible outline only when using keyboard */
+.signin-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
 
 .sr-only {
   position: absolute;

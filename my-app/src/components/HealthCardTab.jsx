@@ -55,7 +55,7 @@ const HealthCardTab = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="icons"
+            // className="icons"
           >
             <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path>
           </svg>
@@ -97,7 +97,7 @@ const HealthCardTab = () => {
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="icons"
+    // className="icons"
   >
     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
   </svg>
@@ -136,7 +136,7 @@ const HealthCardTab = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="icons"
+            // className="icons"
           >
             <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
             <path d="m8.5 8.5 7 7"></path>
@@ -182,11 +182,11 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
+            stroke="#1f2937"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="icons"
+            // className="icons"
           >
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M12 16v-4"></path>
@@ -207,11 +207,11 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
+            stroke="#1f2937"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="icons"
+            // className="icons"
           >
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" x2="12" y1="8" y2="12"></line>
@@ -232,11 +232,11 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
+            stroke="#1f2937"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="icons"
+            // className="icons"
           >
             <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path>
           </svg>
@@ -255,11 +255,11 @@ const HealthCardTab = () => {
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke="#1f2937"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="icons"
+    // className="icons"
   >
     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
   </svg>
@@ -278,11 +278,11 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
+            stroke="#1f2937"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="icons"
+            // className="icons"
           >
             <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
             <path d="m8.5 8.5 7 7"></path>

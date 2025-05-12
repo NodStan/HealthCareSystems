@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 import './NavbarMenu.css';
 import { useDarkMode } from './DarkModeContext';
@@ -13,6 +13,7 @@ const Header = () => {
   const [signinOpen, setSigninOpen] = useState(false);
   const [query, setQuery] = useState('');
   const location = useLocation();
+  const navigate = useNavigate(); // 🆕 Added navigate
   const { darkMode, toggleTheme } = useDarkMode();
   const { isAuthenticated, signOut } = useAuth();
 
@@ -48,7 +49,8 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut();
-    setSigninOpen(false); // Close the signin overlay when signing out
+    setSigninOpen(false);
+    navigate('/'); // 🆕 Redirect to home page after sign out
   };
 
   return (
@@ -75,19 +77,18 @@ const Header = () => {
                     <Link to="/symptom-checker" className="dropdown-item">Symptom Checker</Link>
                     <Link to="/health-calculators" className="dropdown-item">Health Calculators</Link>
                     <Link to="/nutrition-guide" className="dropdown-item">Nutrition Guide</Link>
-                    {/* <Link to="/exercise-library" className="dropdown-item">Exercise Library</Link> */}
                     <Link to="/emergency-guide" className="dropdown-item">Emergency Guide</Link>
                   </div>
                 </div>
 
                 {isAuthenticated && (
                   <div className={`dropdown ${isHealthToolsActive() ? 'active-links' : ''}`}>
-                  <p className="navs-link dropdown-trigger">My Health</p>
-                  <div className="dropdown-menu">
-                    <Link to="/health-dashboard" className="dropdown-item">Health Dashboard</Link>
-                    <Link to="/health-calculators" className="dropdown-item">Medication Tracker</Link>
+                    <p className="navs-link dropdown-trigger">My Health</p>
+                    <div className="dropdown-menu">
+                      <Link to="/health-dashboard" className="dropdown-item">Health Dashboard</Link>
+                      <Link to="/health-calculators" className="dropdown-item">Medication Tracker</Link>
+                    </div>
                   </div>
-                </div>
                 )}
               </div>
             </div>
@@ -114,7 +115,7 @@ const Header = () => {
               </button>
 
               {isAuthenticated && (
-                  <Link to="/profile" className="profile-link">
+                <Link to="/profile" className="profile-link">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -131,7 +132,7 @@ const Header = () => {
                     <circle cx="12" cy="7" r="4" />
                   </svg>
                 </Link>
-                )}
+              )}
 
               <button className="signin-button" onClick={isAuthenticated ? handleSignOut : openSignin}>
                 {isAuthenticated ? 'Sign Out' : 'Sign In'}
