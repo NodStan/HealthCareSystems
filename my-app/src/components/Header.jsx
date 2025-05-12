@@ -15,7 +15,7 @@ const Header = () => {
   const { darkMode, toggleTheme } = useDarkMode();
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  // const closeMenu = () => setMenuOpen(false);
 
   const openDialog = () => setDialogOpen(true);
   const closeDialog = () => {

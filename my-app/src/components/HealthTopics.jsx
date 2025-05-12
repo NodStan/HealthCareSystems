@@ -1,4 +1,5 @@
 import React from 'react'
+import './HealthTopics.css'
 
 const HealthTopics = () => {
   return (
