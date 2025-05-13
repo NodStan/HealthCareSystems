@@ -31,7 +31,7 @@ const App = () => {
         <OverlayProvider>
           <Router>
             <div className="app-layout">
-              <Header /> {/* The Header will change based on authentication state */}
+              <Header />
               <div className="content">
                 <Routes>
                   <Route path="/" element={<Hero />} />

@@ -525,7 +525,7 @@
 .profile-link {
   padding: 0.5rem;
   border-radius: 9999px;
-  color: ;
+  /* color: ;    there's no color here  */
   transition: background-color 0.2s, color 0.2s;
   display: inline-flex;
   align-items: center;
