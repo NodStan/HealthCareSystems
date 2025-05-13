@@ -1,11 +1,18 @@
 import React from 'react'
-import './NutritionGuide.css' // Assuming you have a CSS file for styling
-import { useDarkMode } from '../DarkModeContext'; // Importing the DarkMode context
+import "./NutritionGuide.css"
+
 
 const NutritionGuide = () => {
   return (
-    <div>NutritionGuide</div>
+    <div className="nutrition-guide-container">
+      <h1 className="nutrition-guide-heading">
+        Nutrition Guide
+      </h1>
+      <p className="nutrition-guide-description">
+        Discover personalized nutrition recommendations, healthy recipes, and expert dietary guidance for optimal health.
+      </p>
+    </div>
   )
 }
 
-export default NutritionGuide
+export default NutritionGuide;

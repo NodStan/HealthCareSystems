@@ -42,6 +42,7 @@ const App = () => {
                 <Route path="/exercise-library" element={<ExerciseLibrary />} />
                 <Route path="/emergency-guide" element={<EmergencyGuide />} />
                 <Route path="/login" element={<Login />} />
+                <Route path='*' element={<p>Not found</p>}/>
               </Routes>
             </div>
             <Footer />

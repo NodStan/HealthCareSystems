@@ -1,0 +1,56 @@
+.health-calculators-container {
+    text-align: center;
+    /* background-color: red; */
+    padding-top: 43px;
+    background-color: #F8FAFC;
+  }
+
+
+  
+  .health-calculators-title {
+    font-size: 1.875rem; /* Equivalent to text-3xl */
+    font-weight: bold;
+    color: var(--foreground, #000); /* Fallback if no CSS variable is set */
+    transition: color 0.3s ease;
+    margin-bottom: 0.5rem; /* Equivalent to mb-2 */
+  }
+  
+  .health-calculators-description {
+    color: var(--muted-foreground, #666); /* Fallback if no CSS variable is set */
+    max-width: 40rem; /* Equivalent to max-w-2xl */
+    margin: 0 auto;
+    transition: color 0.3s ease;
+    margin-bottom: 1rem; /* Equivalent to mb-2 */
+    /* background-color: red; */
+  }
+  .mee{
+    display:   flex;
+   
+    /* background-color: red; */
+    justify-content: space-around
+  }
+  .card {
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+  }
+  
+  
+  @media (max-width: 768px) {
+   .mee{
+    flex-direction: column;
+    /* background-color: red; */
+    width: 90%;
+   }
+
+   .health-calculators-container{
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+  }
