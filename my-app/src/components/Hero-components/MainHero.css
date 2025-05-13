@@ -176,7 +176,7 @@
   }
 
   @media (max-width: 768px) {
-    .health-topics-container, .feature-grid, .testimonials-grid{
+    .health-topics-container, .feature-grid, .testimonials-grid, .auth-modal-container, .search-popup{
       width: 100%;
       padding-left: 1rem;
       padding-right: 1rem;
