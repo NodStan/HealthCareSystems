@@ -1,14 +1,8 @@
-.symptom-checker{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 2%;
-}
-
-@media (max-width: 768px) {
-  .symptom-checker {
-    margin-top: 10%;
-  }
+.symptom-checker {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
 }
 
 .symptom-checker.dark{
@@ -39,17 +33,33 @@
   color: #6b7280;
 }
 
-.symptom-checker-wrapper{
-    width: 45%;
-    margin-bottom: 2rem;
+.symptom-checker-wrapper {
+  width: 100%;
+  max-width: 1200px; /* keeps it from stretching too far on huge screens */
+  /* padding: 0 1.5rem; */
+  margin-bottom: 2rem;
 }
+
+@media (min-width: 768px) {
+  .symptom-checker-wrapper {
+    width: 70%;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .symptom-checker-wrapper {
+    width: 45%;
+  }
+}
+
 
 .symptom-checker-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     opacity: 0;
     animation: fadeIn 0.5s ease-in forwards;
     color: #333;
@@ -173,15 +183,6 @@
       opacity: 1;
     }
   }
-  
-
-  /* .symptom-checker-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    animation: slideInRight 0.3s ease-out;
-    color: #333;
-  } */
 
   .emergency-card-wrapper{
     display: flex;
@@ -193,14 +194,7 @@
 
   @media (max-width: 768px) {
     .emergency-card-wrapper {
-      margin-bottom: 25%;
       margin-top: 10%;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .progress-section {
-      /* margin-bottom: 55%; */
     }
   }
   
@@ -221,7 +215,8 @@
     border-radius: 0.5rem;
     color: #111827;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    width: 94%;
+    width: 100%;
+    background-color: #FFFFFF;
   }
   
   .cards-header {

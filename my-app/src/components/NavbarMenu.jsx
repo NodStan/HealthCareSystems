@@ -27,7 +27,7 @@ const NavbarMenu = () => {
 
         <div className="nav-section-title">My Health</div>
         <div className="nav-submenu">
-          <Link to="/my-health" className="nav-sublink" onClick={closeMenu}>Health Dashboard</Link>
+          <Link to="/health-dashboard" className="nav-sublink" onClick={closeMenu}>Health Dashboard</Link>
           <Link to="/medication-tracker" className="nav-sublink" onClick={closeMenu}>Medication Tracker</Link>
           <Link to="/telehealth" className="nav-sublink" onClick={closeMenu}>TeleHealth</Link>
         </div>

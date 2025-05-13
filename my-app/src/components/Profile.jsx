@@ -217,7 +217,7 @@ const Profile = () => {
                 {[...checkedConditions, ...customConditions].map((cond) => (
                   <div key={cond} className="tag">
                     {cond}
-                    <button type="button" className="remove-tag" onClick={() => removeCondition(cond)}>×</button>
+                    <button className="remove-tag" onClick={() => removeCondition(cond)}>×</button>
                   </div>
                 ))}
               </div>
