@@ -18,7 +18,7 @@ const Header = () => {
   const { isAuthenticated, signOut } = useAuth();
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  // const closeMenu = () => setMenuOpen(false);
 
   const openDialog = () => setDialogOpen(true);
   const closeDialog = () => {
