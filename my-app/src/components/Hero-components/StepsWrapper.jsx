@@ -17,7 +17,7 @@ const StepsWrapper = () => {
 
       <div className={`steps-wrapper ${isDarkMode ? 'dark' : ''}`}>
         <div className="steps-container">
-          <div className="steps-line"></div>
+          {/* <div className="steps-line"></div> */}
           <div className="steps-grid">
             <motion.div
               className="step"

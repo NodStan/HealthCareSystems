@@ -56,7 +56,7 @@ const SymptomChecker = () => {
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <div className="emergency-card">
-            <div className="card-header">
+            <div className="cards-header">
               <div className="header-content">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

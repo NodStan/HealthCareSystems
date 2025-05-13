@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
-import './NavbarMenu.css'; // Make sure to import NavbarMenu styles
+import './NavbarMenu.css';
 import { useDarkMode } from './DarkModeContext';
 import AuthModal from '../Pages/AuthModal';
-import NavbarMenu from './NavbarMenu'; // <-- Import your NavbarMenu component
+import NavbarMenu from './NavbarMenu';
+import { useAuth } from './AuthContext';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,10 +13,11 @@ const Header = () => {
   const [signinOpen, setSigninOpen] = useState(false);
   const [query, setQuery] = useState('');
   const location = useLocation();
+  const navigate = useNavigate(); // 🆕 Added navigate
   const { darkMode, toggleTheme } = useDarkMode();
+  const { isAuthenticated, signOut } = useAuth();
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
-  const closeMenu = () => setMenuOpen(false);
 
   const openDialog = () => setDialogOpen(true);
   const closeDialog = () => {
@@ -44,6 +46,12 @@ const Header = () => {
     item.toLowerCase().includes(query.toLowerCase())
   );
 
+  const handleSignOut = () => {
+    signOut();
+    setSigninOpen(false);
+    navigate('/');
+  };
+
   return (
     <header className={`header ${darkMode ? 'dark-mode' : ''}`}>
       <nav className="header-nav">
@@ -59,7 +67,7 @@ const Header = () => {
 
               <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
                 <Link to="/" className={`nav-link ${isActive('/') ? 'active-link' : ''}`}><p>Home</p></Link>
-                <Link to="/articles" className={`nav-link ${isActive('/articles') ? 'active-link' : ''}`}><p>Health Topics</p></Link>
+                <Link to="/health-topics" className={`nav-link ${isActive('/health-topics') ? 'active-link' : ''}`}><p>Health Topics</p></Link>
                 <Link to="/health-search" className={`nav-link ${isActive('/health-search') ? 'active-link' : ''}`}><p>Search Conditions</p></Link>
  
                 <div className={`dropdown ${isHealthToolsActive() ? 'active-links' : ''}`}>
@@ -68,10 +76,19 @@ const Header = () => {
                     <Link to="/symptom-checker" className="dropdown-item">Symptom Checker</Link>
                     <Link to="/health-calculators" className="dropdown-item">Health Calculators</Link>
                     <Link to="/nutrition-guide" className="dropdown-item">Nutrition Guide</Link>
-                    <Link to="/exercise-library" className="dropdown-item">Exercise Library</Link>
                     <Link to="/emergency-guide" className="dropdown-item">Emergency Guide</Link>
                   </div>
                 </div>
+
+                {isAuthenticated && (
+                  <div className={`dropdown ${isHealthToolsActive() ? 'active-links' : ''}`}>
+                    <p className="navs-link dropdown-trigger">My Health</p>
+                    <div className="dropdown-menu">
+                      <Link to="/health-dashboard" className="dropdown-item">Health Dashboard</Link>
+                      <Link to="/medication-tracker" className="dropdown-item">Medication Tracker</Link>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -96,7 +113,29 @@ const Header = () => {
                 )}
               </button>
 
-              <button className="signin-button" onClick={openSignin}>Sign in</button>
+              {isAuthenticated && (
+                <Link to="/profile" className="profile-link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="grey"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    // className="icon"
+                  >
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </Link>
+              )}
+
+              <button className="signin-button" onClick={isAuthenticated ? handleSignOut : openSignin}>
+                {isAuthenticated ? 'Sign Out' : 'Sign In'}
+              </button>
 
               <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
                 <svg 
@@ -121,7 +160,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Show NavbarMenu */}
         {menuOpen && (
           <div className="mobile-navbar-menu">
             <NavbarMenu />
@@ -129,7 +167,6 @@ const Header = () => {
         )}
       </nav>
 
-      {/* Search Popup */}
       {dialogOpen && (
         <div className="search-popup-overlay">
           <div className="search-popup">
@@ -170,12 +207,14 @@ const Header = () => {
         </div>
       )}
 
-      {/* Sign In Modal */}
-      {signinOpen && (
+      {signinOpen && !isAuthenticated && (
         <div className="signin-overlay">
           <AuthModal
             isOpen={signinOpen}
             onClose={closeSignin}
+            onSuccess={() => {
+              closeSignin();
+            }}
           />
         </div>
       )}

@@ -1,8 +1,11 @@
 .hero-container {
     margin: 0;
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     background-color: white;
     color: #020817;
+    width: 100%;
   }
 
   .hero-container.dark {
@@ -24,3 +27,16 @@
     background-color: #121212;
     color: white;
   }
+
+  .h > * {
+    padding-bottom: 5rem;
+  }
+  
+  .h > *:first-child {
+    padding-top: 5rem;
+  }
+
+  .h > *:last-child {
+    padding-bottom: 0;
+  }
+

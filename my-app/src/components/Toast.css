@@ -1,0 +1,30 @@
+.toast {
+    position: fixed;
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  .toast.top-center {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .toast.bottom-right {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  @keyframes fadeInOut {
+    0%   { opacity: 0; transform: translateY(-10px); }
+    10%  { opacity: 1; transform: translateY(0); }
+    90%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(10px); }
+  }
+  

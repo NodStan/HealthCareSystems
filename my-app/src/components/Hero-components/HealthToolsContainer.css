@@ -48,7 +48,7 @@
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr;
-    width: 70%;
+    width: 80%;
   }
 
   .feature-grid-wrapper{
