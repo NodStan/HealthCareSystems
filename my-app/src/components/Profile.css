@@ -7,6 +7,15 @@
     margin-bottom: 8%;
 }
 
+@media screen and (max-width: 768px) {
+    .profile-background {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+    }
+  
+}
+
 .profile-container {
     max-width: 900px;
     padding: 30px;  
@@ -359,6 +368,10 @@
   .flex {
     display: flex;
   }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
   
   .items-center {
     align-items: center;
@@ -562,27 +575,28 @@ textarea {
     transform: translateY(0);
   }
   
-  .tag{
-    display: inline-flex;
+  .tag {
+    display: flex;
     align-items: center;
-    background-color: #E2E8F0; /* gray-200 */
-    color: #1A202C; /* gray-900 */
-    /* padding: 0.5rem 1rem; */
-    border-radius: 9999px; /* rounded-full */
-    font-size: 0.875rem; /* text-sm */
-    font-weight: 500; /* font-medium */
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding-left: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    background-color: #e2e8f0; /* light gray bg */
+    color: #1a202c; /* dark text */
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
   }
+  
 
-  .remove-tag{
-    margin-left: 0.5rem;
-    cursor: pointer;
-    color: #4A5568;
-    background-color: transparent;
+  .remove-tag {
+    margin-right: 0;
+    background: transparent;
     border: none;
-  }
+    color: #4a5568;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0rem 1rem;
+  }  
 
   .remove-tag:hover{
     color: #2B6CB0;
