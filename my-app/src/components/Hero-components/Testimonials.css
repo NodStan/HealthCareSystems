@@ -39,7 +39,7 @@
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr;
-    width: 70%;
+    width: 80%;
   }
 
   .testimonials-grid-wrapper{

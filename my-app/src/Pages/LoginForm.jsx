@@ -5,7 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import OAuthButtons from "./0AuthButtons";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
-export default function LoginForm() {
+export default function LoginForm({ onSuccess }) {
   const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,10 +56,13 @@ export default function LoginForm() {
         return;
       }
 
-      const success = signIn(email, password);
+      const success = await signIn(email, password); // Await the signIn function
       if (!success) {
         setError("Invalid email or password.");
         setPopupVisible(true);
+      } else {
+        // On successful login, invoke the onSuccess callback (if passed from parent)
+        onSuccess?.();
       }
     } catch (err) {
       setError("Failed to sign in. Please check your credentials and try again.");
@@ -75,10 +78,13 @@ export default function LoginForm() {
   const handleGoogleSuccess = (response) => {
     const token = response.credential;
     console.log("Google login successful, token:", token);
+    // Here you can send the token to your backend or update the state
   };
 
   const handleGoogleError = (error) => {
     console.error("Google login error:", error);
+    setError("Google login failed.");
+    setPopupVisible(true);
   };
 
   return (

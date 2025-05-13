@@ -8,8 +8,9 @@ const HealthhubContainer = () => {
   const { darkMode: isDarkMode } = useDarkMode();
   return (
     <div>
-      <div className={`healthhub-container ${isDarkMode ? 'dark' : ''}`}>
-        <div className="text-center">
+      <div className={`healthhubs-container ${isDarkMode ? 'dark' : ''}`}>
+        <div className="healthhub-wrapper">
+          <div className="text-center">
           <h2 className="heading">Why Choose HealthHub?</h2>
           <p className="subtext">
             Our platform offers comprehensive health information and personalized recommendations.
@@ -89,6 +90,7 @@ const HealthhubContainer = () => {
               Monitor improvements in your health metrics over time.
             </p>
           </motion.div>
+        </div>
         </div>
       </div>
     </div>

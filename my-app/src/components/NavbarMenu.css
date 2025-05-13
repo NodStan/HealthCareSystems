@@ -10,7 +10,7 @@
 /* Mobile-specific offset */
 @media (max-width: 768px) {
   .navbar-container {
-    top: 5rem; /* Adjusted for taller mobile header */
+    top: 5rem;
   }
 }
 

@@ -53,7 +53,7 @@
   @media (min-width: 769px) {
     .hero-wrapper {
       flex-direction: row;
-      margin-left: 14%;
+      margin-left: 10%;
     }
   
     body.dark .hero-shape {
@@ -81,8 +81,8 @@
     background-color: var(--background);
     transition: background-color 0.3s;
     display: flex;
-    align-items: center;
-    width: 70%;
+    margin-top: 7rem;
+    width: 75%;
   }
 
   @media screen and (max-width: 768px) {
@@ -94,6 +94,7 @@
   
     .hero-content {
       width: 100%;
+      margin: 0;
     }
     
   }
@@ -176,7 +177,7 @@
   }
 
   @media (max-width: 768px) {
-    .health-topics-container, .feature-grid, .testimonials-grid, .auth-modal-container, .search-popup{
+    .health-topics-container, .feature-grid, .testimonials-grid, .auth-modal-container, .search-popup, .healthhub-wrapper, .health-tools-container, .section-header, .healthhub-container, .steps-container{
       width: 100%;
       padding-left: 1rem;
       padding-right: 1rem;

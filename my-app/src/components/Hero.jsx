@@ -15,12 +15,14 @@ function Hero() {
         return (
             <div className={`hero-container ${isDarkMode ? 'dark' : ''}`}>
                 <MainHero/>
+                <div className="h">
                 <HeroTopicsContainer/>
                 <HealthhubContainer/>
                 <HealthToolsContainer/>
                 <Testimonials/>
                 <StepsWrapper/>
                 <CallToAction/>
+                </div>
             </div>
         );
     }

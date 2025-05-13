@@ -150,7 +150,7 @@ const HeroTopicsContainer = () => {
           <motion.div
             className="health-topic-card"
             whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 100 }} // Starts from below
+            initial={{ opacity: 0, y: 100 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
             <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/articles?category=fitness">

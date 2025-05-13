@@ -15,7 +15,6 @@ export default function AuthModal({ isOpen, onClose, onSuccess }) {
       <div className="auth-modal-container" onClick={(e) => e.stopPropagation()}>
         <AuthHeader isLogin={isLogin} setIsLogin={setIsLogin} onClose={onClose} />
         <div className="auth-modal-body">
-          {/* Wrap LoginForm and RegisterForm in ErrorBoundary */}
           <ErrorBoundary>
             {isLogin ? <LoginForm onSuccess={onSuccess} /> : <RegisterForm />}
           </ErrorBoundary>

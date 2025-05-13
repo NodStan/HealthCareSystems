@@ -18,7 +18,6 @@ const Header = () => {
   const { isAuthenticated, signOut } = useAuth();
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
-  // const closeMenu = () => setMenuOpen(false);
 
   const openDialog = () => setDialogOpen(true);
   const closeDialog = () => {
@@ -50,7 +49,7 @@ const Header = () => {
   const handleSignOut = () => {
     signOut();
     setSigninOpen(false);
-    navigate('/'); // 🆕 Redirect to home page after sign out
+    navigate('/');
   };
 
   return (
@@ -86,7 +85,7 @@ const Header = () => {
                     <p className="navs-link dropdown-trigger">My Health</p>
                     <div className="dropdown-menu">
                       <Link to="/health-dashboard" className="dropdown-item">Health Dashboard</Link>
-                      <Link to="/health-calculators" className="dropdown-item">Medication Tracker</Link>
+                      <Link to="/medication-tracker" className="dropdown-item">Medication Tracker</Link>
                     </div>
                   </div>
                 )}
