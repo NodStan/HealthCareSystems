@@ -7,21 +7,31 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState('');
 
+  // Only access localStorage in useEffect to avoid React render errors
   useEffect(() => {
-    const storedAuth = localStorage.getItem('isAuthenticated');
-    if (storedAuth === 'true') setIsAuthenticated(true);
+    try {
+      const storedAuth = localStorage.getItem('isAuthenticated');
+      if (storedAuth === 'true') {
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      console.error('Error accessing localStorage:', error);
+    }
   }, []);
 
+  // Validate email to only allow Gmail or Yahoo
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com)$/;
     return regex.test(email);
   };
 
+  // Validate password to ensure strength
   const validatePassword = (password) => {
     const regex = /^(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     return regex.test(password);
   };
 
+  // Handle sign-in with validation
   const signIn = (email, password) => {
     if (!validateEmail(email)) {
       setAuthError('Email must be a valid Gmail or Yahoo address');
@@ -38,6 +48,7 @@ export const AuthProvider = ({ children }) => {
     return true;
   };
 
+  // Handle sign-out
   const signOut = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('isAuthenticated');
@@ -50,4 +61,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
+// Hook to access auth context
 export const useAuth = () => useContext(AuthContext);

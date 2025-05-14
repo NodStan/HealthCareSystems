@@ -28,13 +28,13 @@ const BMICalculator = () => {
   };
 
   return (
-    <div className="card" style={{background: "white", height: "100%"}}>
-      <div className="card-header">
-        <h3 className="card-title">BMI Calculator</h3>
-        <p className="card-description">Calculate your Body Mass Index</p>
+    <div className="calculator-card" style={{background: "white", height: "100%"}}>
+      <div className="bmi-card-header">
+        <h3 className="bmi-card-title">BMI Calculator</h3>
+        <p className="bmi-card-description">Calculate your Body Mass Index</p>
       </div>
-      <div className="card-content">
-        <div className="form-group">
+      <div className="bmi-card-content">
+        <div className="bmi-form-group">
           <label className='unitt'>Unit System</label>
           <div className="radio-group">
             <label>
@@ -58,7 +58,7 @@ const BMICalculator = () => {
           </div>
         </div>
 
-        <div className="form-group">
+        <div className="bmi-form-group">
           <label className='unitt' htmlFor="weight">Weight ({unit === 'metric' ? 'kg' : 'lb'})</label>
           <input
           className='inputtttt'
@@ -70,7 +70,7 @@ const BMICalculator = () => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="bmi-form-group">
           <label className='unitt' htmlFor="height">Height ({unit === 'metric' ? 'cm' : 'ft'})</label>
           <input
            className='inputtttt'
@@ -82,9 +82,24 @@ const BMICalculator = () => {
           />
         </div>
 
-        <div className="info-box">
-          <span className="info-icon">ℹ️</span>
-          <p style={{width: "80%",height: "auto", textAlign: "left"}}>BMI is a screening tool but it does not directly measure body fat. Consult a healthcare provider for a complete health assessment.</p>
+        <div className="info-boxes">
+          <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="info-icon"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4" />
+      <path d="M12 8h.01" />
+    </svg>
+          <p style={{width: "100%",height: "auto", textAlign: "left", color: "#1D4ED8"}}>BMI is a screening tool but it does not directly measure body fat. Consult a healthcare provider for a complete health assessment.</p>
         </div>
       </div>
 

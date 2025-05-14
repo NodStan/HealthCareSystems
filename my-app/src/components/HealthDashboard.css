@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+  padding: 4%;
+  padding-top: 0;
 }
 
 .my-health-dashboard{

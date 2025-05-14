@@ -67,24 +67,24 @@ const MainHero = () => {
                   className="button-wrapper"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <a className="search-button">
+                  <Link to= "/health-search" className="search-button">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <circle cx="11" cy="11" r="8" />
                       <path d="m21 21-4.3-4.3" />
                     </svg>
                     Search Conditions
-                  </a>
+                  </Link>
                 </motion.div>
                 <motion.div 
                   className="button-wrapper secondary"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <a className="secondary-button">
+                  <Link to= "/health-dashboard" className="secondary-button">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0L6.41 10.54A2 2 0 0 1 4.49 12H2" />
                     </svg>
                     My Health
-                  </a>
+                  </Link>
                 </motion.div>
               </div>
 

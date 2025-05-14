@@ -1,6 +1,7 @@
 import React from 'react'
 import './CallToAction.css'
 import { useDarkMode } from '../DarkModeContext';
+import { Link } from 'react-router-dom';
 
 const CallToAction = () => {
     const { darkMode: isDarkMode } = useDarkMode();
@@ -19,9 +20,9 @@ const CallToAction = () => {
                     </a>
                     </div>
                     <div className="button-wrapper ml">
-                    <a href="/articles" className="btns btns-secondary">
+                    <Link to="/health-topics" className="btns btns-secondary">
                         Browse health topics
-                    </a>
+                    </Link>
                     </div>
                 </div>
                 </div>
