@@ -79,7 +79,7 @@ const RegisterForm = () => {
           />
         </div>
 
-        <div className="form-group checkbox-group">
+        <div className="form-groups">
           <input
             type="checkbox"
             id="terms"
@@ -89,7 +89,7 @@ const RegisterForm = () => {
             required
             className="checkbox"
           />
-          <label htmlFor="terms" className="checkbox-label">
+          <label htmlFor="terms" className="checkbox-labels">
             I agree to the <a href="#" className="link">Terms of Service</a> and <a href="#" className="link">Privacy Policy</a>
           </label>
         </div>

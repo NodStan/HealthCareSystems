@@ -6,8 +6,8 @@ import AuthModal from '../Pages/AuthModal';
 
 const NavbarMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
-  const [isSigninOpen, setSigninOpen] = useState(false); // Needed for modal control
-  const { isAuthenticated, signOut } = useAuth(); // Proper context usage
+  const [isSigninOpen, setSigninOpen] = useState(false);
+  const { isAuthenticated, signOut } = useAuth();
   const navigate = useNavigate();
 
   const closeMenu = () => {
@@ -19,14 +19,14 @@ const NavbarMenu = () => {
 
   const handleSignOut = () => {
     signOut();
-    setSigninOpen(false);
+    closeSignin();
     navigate('/');
   };
 
   return (
     <div className="navbar-container">
       <div className={`navbar-menu ${isMenuOpen ? 'open' : 'closed'}`}>
-        <Link to="/" className="navv-link active" onClick={closeMenu}>Home</Link>
+        <Link to="/" className="navv-link" onClick={closeMenu}>Home</Link>
         <Link to="/health-topics" className="navv-link" onClick={closeMenu}>Health Topics</Link>
         <Link to="/health-search" className="navv-link" onClick={closeMenu}>Search Conditions</Link>
 
@@ -57,7 +57,11 @@ const NavbarMenu = () => {
         </button>
       </div>
 
-      <AuthModal isOpen={isSigninOpen} onClose={() => setSigninOpen(false)} onSuccess={() => {closeSignin()}}/>
+      <AuthModal
+        isOpen={isSigninOpen}
+        onClose={closeSignin}
+        onSuccess={closeSignin}
+      />
     </div>
   );
 };

@@ -207,7 +207,7 @@
 }
 
 .dropdown-item:hover {
-  background-color: var(--muted);
+  background-color: #0ea2f1;
 }
 
 .header.dark-mode .dropdown-menu {
@@ -437,6 +437,7 @@
   transition: background 0.3s ease, color 0.3s ease;
   cursor: pointer;
   border: none;
+  outline: none;
 }
 
 .sun-icon,

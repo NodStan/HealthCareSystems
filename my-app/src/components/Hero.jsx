@@ -10,18 +10,18 @@ import StepsWrapper from './Hero-components/StepsWrapper';
 import MainHero from './Hero-components/MainHero';
 
 
-function Hero() {
+function Hero({ onOpenAuth }) {
     const { darkMode: isDarkMode } = useDarkMode();
         return (
             <div className={`hero-container ${isDarkMode ? 'dark' : ''}`}>
-                <MainHero/>
+                <MainHero onOpenAuth={onOpenAuth}/>
                 <div className="h">
                 <HeroTopicsContainer/>
                 <HealthhubContainer/>
                 <HealthToolsContainer/>
                 <Testimonials/>
                 <StepsWrapper/>
-                <CallToAction/>
+                <CallToAction onOpenAuth={onOpenAuth}/>
                 </div>
             </div>
         );

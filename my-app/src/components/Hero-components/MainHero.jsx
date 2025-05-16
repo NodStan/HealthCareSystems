@@ -8,7 +8,7 @@ import AuthModal from '/src/Pages/AuthModal';
 import { useAuth } from '../AuthContext';
 
 
-const MainHero = () => {
+const MainHero = ({ onOpenAuth }) => {
   const { darkMode: isDarkMode } = useDarkMode();
   const [signinOpen, setSigninOpen] = useState(false);
 
@@ -121,17 +121,18 @@ const MainHero = () => {
     className="cta-section"
     whileHover={{ y: -3 }}
   >
-    <a className="cta-link" onClick={openSignin}>
-      <svg className="cta-icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-        <circle cx="12" cy="7" r="4"></circle>
-      </svg>
-      Create free account
-      <svg className="cta-icon-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path d="M5 12h14"></path>
-        <path d="m12 5 7 7-7 7"></path>
-      </svg>
-    </a>
+    <Link className="cta-link" onClick={() => onOpenAuth("register")}>
+  <svg className="cta-icon-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+    <circle cx="12" cy="7" r="4"></circle>
+  </svg>
+  Create free account
+  <svg className="cta-icon-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path d="M5 12h14"></path>
+    <path d="m12 5 7 7-7 7"></path>
+  </svg>
+</Link>
+
   </motion.div>
 )}
 
