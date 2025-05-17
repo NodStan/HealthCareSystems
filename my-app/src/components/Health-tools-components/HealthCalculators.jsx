@@ -26,10 +26,10 @@ const HealthCalculators = () => {
             <p className="tool-description">Identify possible conditions based on symptoms</p>
           </Link>
 
-          <Link className="tool-card" to="/nutrition-guide">
+          {/* <Link className="tool-card" to="/nutrition-guide">
             <p className="tool-title">Nutrition Guide</p>
             <p className="tool-description">Learn about healthy eating and meal planning</p>
-          </Link>
+          </Link> */}
 
           <Link className="tool-card" to="/exercise-library">
             <p className="tool-title">Exercise Library</p>

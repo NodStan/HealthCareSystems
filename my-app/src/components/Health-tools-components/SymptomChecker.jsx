@@ -119,7 +119,7 @@ const SymptomChecker = () => {
 
             <div className="card-content">
               <div className="search-wrapper">
-                {/* <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="search-icons"
                   viewBox="0 0 24 24"
@@ -131,11 +131,11 @@ const SymptomChecker = () => {
                 >
                   <circle cx="11" cy="11" r="8"></circle>
                   <path d="m21 21-4.3-4.3"></path>
-                </svg> */}
+                </svg>
                 <input
                   type="text"
                   placeholder="Search symptoms..."
-                  className="search-input"
+                  className="seearch-input"
                 />
               </div>
 

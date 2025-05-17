@@ -104,8 +104,8 @@ const BMICalculator = () => {
       </div>
 
       <div className="card-footerrr">
-        <button className="btn secondary" onClick={handleReset}>Reset</button>
-        <button className="btn primary" onClick={handleCalculate}>Calculate BMI</button>
+        <button className="btns secondary" onClick={handleReset}>Reset</button>
+        <button className="btns primary" onClick={handleCalculate}>Calculate BMI</button>
       </div>
     </div>
   );

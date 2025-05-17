@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 5%;
-    background-color: #F4F7FA;
+    /* background-color: #F4F7FA; */
     height: 100%;
     margin-bottom: 8%;
 }
@@ -23,8 +23,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden; /* prevent inner overflows */
-  }
-  
+  }  
 
 .health-header {
     /* padding: 1rem 1.5rem; px-6 py-4 */

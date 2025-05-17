@@ -188,19 +188,37 @@ const MedicationTracker = ({ onClick, disabled = false }) => {
             ) : (
               <div className="medication-card">
                 <div className="medication-card-header">
-                  <h3 className="medication-card-title">Atorvastatin 20mg</h3>
-                  <p className="medication-card-subtext">Once daily - 9:00 PM</p>
+                  <h1 className="medication-card-title">Metformin 500mg <svg className="medication-card-icon medication-card-text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
+                <path d="m8.5 8.5 7 7"></path>
+              </svg></h1>
+                  <p className="medication-card-subtext">Twice daily - 8:00 AM, 8:00 PM</p>
                 </div>
                 <div className="medication-card-content">
-                  <p className="medication-card-subtext">Take at bedtime</p>
+                  <p className="medication-card-subtext">Take with food to reduce stomach upset</p>
                 </div>
                 <div className="medication-card-footer">
-                  <button className="medication-card-button medication-card-button-outline">Remind</button>
+                  <button className="medication-card-button medication-card-button-outline"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  strokeWidth="2"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  className="icon-clock"
+>
+  <circle cx="12" cy="12" r="10" />
+  <polyline points="12 6 12 12 16 14" />
+</svg>
+Remind</button>
                   <button
                     className="medication-card-button medication-card-button-primary"
                     onClick={() => setTaken(true)}
                   >
-                    Mark as Taken
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big h-4 w-4 mr-2" data-lov-id="src/pages/MedicationTracker.tsx:311:22" data-lov-name="CheckCircle" data-component-path="src/pages/MedicationTracker.tsx" data-component-line="311" data-component-file="MedicationTracker.tsx" data-component-name="CheckCircle" data-component-content="%7B%22className%22%3A%22h-4%20w-4%20mr-2%22%7D"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>Mark as Taken
                   </button>
                 </div>
               </div>

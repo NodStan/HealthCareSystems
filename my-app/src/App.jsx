@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
-import HealthTopics from "./components/HealthTopics";
+import HealthTopics from "./components/HealthTopics.jsx";
 import SearchConditions from "./components/SearchConditions";
 import HealthTools from "./components/HealthTools";
 import Community from "./components/Community";
@@ -12,19 +12,19 @@ import AuthModal from "./Pages/AuthModal";
 import HealthDashboard from "./components/HealthDashboard";
 import Profile from "./components/Profile";
 import "./App.css";
-import { DarkModeProvider } from "./components/DarkModeContext";
+import { DarkModeProvider, useDarkMode } from "./components/DarkModeContext";
 import { OverlayProvider } from "./components/OverlayContext";
-import { AuthProvider } from "./components/AuthContext";
+import { AuthProvider, useAuth } from "./components/AuthContext";
 import SymptomChecker from "./components/Health-tools-components/SymptomChecker";
 import HealthCalculators from "./components/Health-tools-components/HealthCalculators";
 import NutritionGuide from "./components/Health-tools-components/NutritionGuide";
 import EmergencyGuide from "./components/Health-tools-components/EmergencyGuide";
-import ExerciseLibrary from "./components/Health-tools-components/ExerciseLibrary";
 import MedicationTracker from "./components/MedicationTracker";
 import PrivateRoute from "./components/PrivateRoute";
-import LoginForm from "./Pages/LoginForm";
-import RegisterForm from "./Pages/RegisterForm";
+import ErrorBoundary from "./Pages/ErrorBoundary";
 import "./components/Hero-components/MainHero.css";
+import ArticlesList from "./components/ArticlesList";
+import ArticleDetail from "./components/ArticleDetail.jsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -37,6 +37,8 @@ const ScrollToTop = () => {
 const AppContent = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [initialTab, setInitialTab] = useState("login");
+  const { darkMode: isDarkMode } = useDarkMode();
+  const { isAuthenticated } = useAuth();
 
   const handleOpenAuth = (tab = "login") => {
     setInitialTab(tab);
@@ -51,8 +53,8 @@ const AppContent = () => {
     <>
       <ScrollToTop />
       <div className="app-layout">
-        <Header onOpenAuth={handleOpenAuth}/>
-        <div className="content">
+        <Header onOpenAuth={handleOpenAuth} />
+        <div className={`content ${isDarkMode ? "dark" : ""}`}>
           <Routes>
             <Route path="/" element={<Hero onOpenAuth={handleOpenAuth} />} />
             <Route path="/health-topics" element={<HealthTopics />} />
@@ -64,36 +66,65 @@ const AppContent = () => {
             <Route path="/health-calculators" element={<HealthCalculators />} />
             <Route path="/nutrition-guide" element={<NutritionGuide />} />
             <Route path="/emergency-guide" element={<EmergencyGuide />} />
-            <Route path="/health-dashboard" element={<PrivateRoute element={<HealthDashboard />} />} />
-            <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
-            <Route path="/medication-tracker" element={<PrivateRoute element={<MedicationTracker />} />} />
+            <Route path="/articles-list" element={<ArticlesList />} />
+            <Route path="/articles-list/:articleId" element={<ArticleDetail />} />
+            <Route
+              path="/health-dashboard"
+              element={
+                <PrivateRoute onRequireAuth={handleOpenAuth}>
+                  <HealthDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute onRequireAuth={handleOpenAuth}>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/medication-tracker"
+              element={
+                <PrivateRoute onRequireAuth={handleOpenAuth}>
+                  <MedicationTracker />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </div>
         <Footer />
       </div>
 
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={handleCloseAuth}
-        onSuccess={handleCloseAuth}
-        initialTab={initialTab}
-        onOpenAuth={handleOpenAuth}
-      />
+      {showAuthModal && !isAuthenticated && (
+        <div className="signin-overlay">
+          <AuthModal
+            isOpen={showAuthModal}
+            onClose={handleCloseAuth}
+            onSuccess={handleCloseAuth}
+            initialTab={initialTab}
+            onOpenAuth={handleOpenAuth}
+          />
+        </div>
+      )}
     </>
   );
 };
 
 const App = () => {
   return (
-    <AuthProvider>
-      <DarkModeProvider>
-        <OverlayProvider>
-          <Router>
-            <AppContent />
-          </Router>
-        </OverlayProvider>
-      </DarkModeProvider>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <DarkModeProvider>
+          <OverlayProvider>
+            <Router>
+              <AppContent />
+            </Router>
+          </OverlayProvider>
+        </DarkModeProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 };
 

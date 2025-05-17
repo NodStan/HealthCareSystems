@@ -125,7 +125,7 @@ input[type='number'] {
   background-color: 0;
 }
 
-.btn {
+.btns {
   padding: 8px 16px;
   border-radius: 4px;
   font-weight: 600;
@@ -134,24 +134,24 @@ input[type='number'] {
   font-size: 14px;
 }
 
-.btn.primary {
+.btns.primary {
   background-color: #26AAF2;
   color: white;
   transition: .5s;
 }
 
-.btn.primary:hover {
+.btns.primary:hover {
   background-color: #007bff;
 }
 
-.btn.secondary {
+.btns.secondary {
   background-color: #f8f9fa;
   border: 1px solid #ccc;
   color: #000;
   transition: .5s;
 }
 
-.btn.secondary:hover {
+.btns.secondary:hover {
   background-color: #0EA2F1;
   color: white;
 }

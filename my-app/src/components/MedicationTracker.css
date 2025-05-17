@@ -9,7 +9,7 @@
 .medication-tracker-header,
 .medication-card-grid,
 .medication-heading,
-.tabs-container,
+.tabs-containers,
 .tab-cont {
   width: 80%;
   max-width: 1200px;
@@ -73,13 +73,15 @@
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.5rem 0.5rem;
-  /* padding-left: 0; */
   border-radius: 0.375rem;
   height: 2.5rem;
   transition: background-color 0.3s, color 0.3s;
-  border: 1px solid var(--input-border);
   background-color: var(--background);
   color: inherit;
+}
+
+.reminder-button{
+  border: 1px solid #ccc;
 }
 
 .reminder-button:hover {
@@ -88,7 +90,7 @@
 }
 
 .add-medication-button {
-  background-color: var(--primary);
+  background-color: #0ea2f1;
   color: #fff;
 }
 
@@ -150,7 +152,7 @@
   flex-direction: column;
   gap: 0.375rem;
   padding: 1.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0rem;
 }
 
 .medication-card-title {
@@ -159,6 +161,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
 }
 
 .medication-card-content {
@@ -176,11 +179,14 @@
 .medication-card-value {
   font-size: 1.875rem;
   font-weight: bold;
+  padding: 0;
+  margin: 0;
 }
 
 .medication-card-subtext {
   font-size: 0.875rem;
   color: gray;
+  margin: 0;
 }
 
 .medication-card-icon {
@@ -222,7 +228,7 @@
 }
 
 .medication-card-button-primary {
-  background-color: #2563eb;
+  background-color: #0ea2f1;
   color: #fff;
   border: none;
 }
@@ -232,7 +238,7 @@
 }
 
 /* Tabs */
-.tabs-container {
+.tabs-containers {
   margin-bottom: 3rem;
 }
 
@@ -243,7 +249,7 @@
     justify-content: flex-start; /* left align */
     border-radius: 0.375rem;
     background-color: #e0e0e0;
-    padding: 0.25rem;
+    /* padding: 0.25rem; */
     color: #6b7280;
     gap: 0.5rem;
     overflow-x: auto;            /* horizontal scroll if needed */
@@ -410,6 +416,8 @@
     transition: all 0.3s ease;
     box-shadow: none;
     height: 100%;
+    text-align: center;
+    vertical-align: center;
   }
   
   .tab-triggers:focus-visible {
@@ -467,7 +475,7 @@
   
   .medication-table tbody tr:focus-within,
   .medication-table tbody tr[data-state="selected"] {
-    background-color: var(--muted-bg, #f0f0f0);
+    /* background-color: var(--muted-bg, #f0f0f0); */
   }
   
   .medication-table th,

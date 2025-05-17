@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from './AuthContext';
-import AuthModal from '../Pages/AuthModal'; // Update path if needed
+import AuthModal from '../Pages/AuthModal';
 
-const PrivateRoute = ({ element }) => {
+const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
   const [signinOpen, setSigninOpen] = useState(false);
 
@@ -27,7 +27,7 @@ const PrivateRoute = ({ element }) => {
     );
   }
 
-  return element;
+  return <>{children}</>;
 };
 
 export default PrivateRoute;
