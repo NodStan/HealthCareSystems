@@ -128,6 +128,17 @@
   border: 1px solid #1E293B;
 }
 
+.content.dark .health-calculators-container .calculator-card .btns.secondary{
+  background-color: #020817;
+  color: #fff;
+  border: 1px solid #1E293B;
+}
+
+.content.dark .health-calculators-container .calculator-card .btns.primary{
+  color: #020817;
+  border: 1px solid #1E293B;
+}
+
 .content.dark .health-calculators-container h3{
   color: #fff;
 }
@@ -157,7 +168,7 @@
 }
 
 .content.dark .heart-card-header{
-  background-color: #020817;
+  background-color: #1E293B;
   color: #fff;
   border: 1px solid #1E293B;
 }
