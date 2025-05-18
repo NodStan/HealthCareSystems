@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NutritionGuide.css';
 
-export default function NutritionGuide() {
+const NutritionGuide = () => {
   const [activeTab, setActiveTab] = useState('resources');
 
   return (
@@ -76,5 +76,6 @@ export default function NutritionGuide() {
       </div>
     </main>
   );
-}
+};
+
 export default NutritionGuide;
