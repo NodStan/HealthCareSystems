@@ -34,7 +34,7 @@ const Footer = () => {
             <ul className="footer-links">
               <li><Link to="/" className="footer-link">Home</Link></li>
               <li><Link to="/articles" className="footer-link">Health Articles</Link></li>
-              <li><Link to="/dashboard" className="footer-link">My Dashboard</Link></li>
+              <li><Link to="/my-dashboard" className="footer-link">My Dashboard</Link></li>
               <li><Link to="/profile" className="footer-link">Health Profile</Link></li>
               <li><Link to="/?auth=login" className="footer-link">Sign In</Link></li>
               <li><Link to="/?auth=register" className="footer-link">Register</Link></li>
@@ -102,7 +102,7 @@ const Footer = () => {
         </div>
 
         <div className="bottom-footer">
-        <div class="footer-bottom mt-8 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between">
+        <div className="footer-bottom mt-8 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between">
             <p className="text-base text-gray-400 md:mb-0">
               © 2025 HealthHub. All rights reserved.
             </p>

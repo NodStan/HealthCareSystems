@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 import AuthModal from '../Pages/AuthModal';
 
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  const [signinOpen, setSigninOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const openSignin = () => setSigninOpen(true);
-  const closeSignin = () => setSigninOpen(false);
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setShowModal(true);
+    } else {
+      setShowModal(false);
+    }
+  }, [isAuthenticated]);
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   if (!isAuthenticated) {
-    if (!signinOpen) openSignin();
-
     return (
       <>
-        {signinOpen && (
+        {showModal && (
           <div className="signin-overlay">
             <AuthModal
-              isOpen={signinOpen}
-              onClose={closeSignin}
-              onSuccess={closeSignin}
+              isOpen={showModal}
+              onClose={handleClose}
+              onSuccess={handleClose}
+              initialTab="login"
             />
           </div>
         )}

@@ -122,6 +122,21 @@
   color: #fff;
 }
 
+.content.dark .tag{
+  background-color: #1E293B;
+  color: #fff;
+}
+
+.content.dark .remove-tag{
+  background-color: #1E293B;
+  color: #fff;
+}
+
+.content.dark .custom-textarea{
+  background-color: #1E293B;
+  border: 1px solid #1E293B;
+}
+
 .content.dark .health-calculators-container .calculator-card{
   background-color: #020817 !important;
   color: #fff;
@@ -365,13 +380,13 @@
 }
 
 .content.dark .profile-container input{
-  background-color: #020817;
+  background-color: #1E293B;
   border: 1px solid #1E293B;
   color: #fff;
 }
 
 .content.dark .profile-container select{
-  background-color: #020817;
+  background-color: #1E293B;
   border: 1px solid #1E293B;
   color: #fff;
 }

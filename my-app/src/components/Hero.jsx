@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Hero.css';
+import { Link } from 'react-router-dom';
 import { useDarkMode } from './DarkModeContext';
 import CallToAction from './Hero-components/CallToAction';
 import HealthhubContainer from './Hero-components/HealthhubContainer';
@@ -23,6 +24,10 @@ function Hero({ onOpenAuth }) {
                 <StepsWrapper/>
                 <CallToAction onOpenAuth={onOpenAuth}/>
                 </div>
+                <div>
+    <h1>Welcome to HealthApp</h1>
+    <Link to="/mood-tracker">Try the Mood Tracker</Link>
+  </div>
             </div>
         );
     }

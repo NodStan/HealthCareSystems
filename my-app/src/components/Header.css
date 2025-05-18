@@ -232,7 +232,11 @@
 }
 
 .header.dark-mode .dropdown-menu {
-  background: #1e1e1e;
+  background: #020817;
+}
+
+.header.dark-mode .dropdown-item:hover {
+  background-color: #1E293B;
 }
 
 .dropdown:hover .dropdown-menu {

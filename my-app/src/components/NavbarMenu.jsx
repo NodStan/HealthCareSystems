@@ -44,6 +44,7 @@ const NavbarMenu = () => {
             <div className="nav-submenu">
               <Link to="/health-dashboard" className="nav-sublink" onClick={closeMenu}>Health Dashboard</Link>
               <Link to="/medication-tracker" className="nav-sublink" onClick={closeMenu}>Medication Tracker</Link>
+              <Link to="/my-dashboard" className="nav-sublink" onClick={closeMenu}>My Dashboard</Link>
             </div>
           </>
         )}

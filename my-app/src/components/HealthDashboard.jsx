@@ -208,7 +208,11 @@ const HealthDashboard = () => {
         </div>
         <div className="caard-content">
           
-          <p className="values"><p className="labels">Progress</p>7500 / 10000 steps</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>7500 / 10000 steps</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%"}} />
           </div>
@@ -237,7 +241,11 @@ const HealthDashboard = () => {
           </h3>
         </div>
         <div className="caard-content">
-          <p className="values"><p className="labels">Progress</p>6 / 8 cups</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>6 / 8 glasses</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%" }} />
           </div>
@@ -265,7 +273,11 @@ const HealthDashboard = () => {
           </h3>
         </div>
         <div className="caard-content">
-          <p className="values"><p className="labels">Progress</p>3 / 5 days</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>3 / 5 days</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%" }} />
           </div>
@@ -293,7 +305,11 @@ const HealthDashboard = () => {
           </h3>
         </div>
         <div className="caard-content">
-          <p className="values"><p className="labels">Progress</p>7 / 8 hours</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>7 / 8 hours</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%" }} />
           </div>

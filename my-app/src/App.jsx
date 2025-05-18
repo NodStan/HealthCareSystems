@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from "react-router-dom";
 import Header from "./components/Header";
 import HealthTopics from "./components/HealthTopics.jsx";
 import SearchConditions from "./components/SearchConditions";
@@ -25,6 +30,8 @@ import ErrorBoundary from "./Pages/ErrorBoundary";
 import "./components/Hero-components/MainHero.css";
 import ArticlesList from "./components/ArticlesList";
 import ArticleDetail from "./components/ArticleDetail.jsx";
+import MoodTracker from "./components/Mood/MoodTracker.jsx";
+import MyDashboard from "./components/MyDashboard.jsx";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -49,6 +56,9 @@ const AppContent = () => {
     setShowAuthModal(false);
   };
 
+  console.log("Rendering AppContent");
+  console.log("Authenticated:", isAuthenticated);
+
   return (
     <>
       <ScrollToTop />
@@ -68,32 +78,67 @@ const AppContent = () => {
             <Route path="/emergency-guide" element={<EmergencyGuide />} />
             <Route path="/articles-list" element={<ArticlesList />} />
             <Route path="/articles-list/:articleId" element={<ArticleDetail />} />
+
+            <Route
+              path="/mood-tracker"
+              element={
+                <ErrorBoundary>
+                  <PrivateRoute onRequireAuth={handleOpenAuth}>
+                    <MoodTracker />
+                  </PrivateRoute>
+                </ErrorBoundary>
+              }
+            />
+
             <Route
               path="/health-dashboard"
               element={
-                <PrivateRoute onRequireAuth={handleOpenAuth}>
-                  <HealthDashboard />
-                </PrivateRoute>
+                <ErrorBoundary>
+                  <PrivateRoute onRequireAuth={handleOpenAuth}>
+                    <HealthDashboard />
+                  </PrivateRoute>
+                </ErrorBoundary>
               }
             />
+
             <Route
               path="/profile"
               element={
-                <PrivateRoute onRequireAuth={handleOpenAuth}>
-                  <Profile />
-                </PrivateRoute>
+                <ErrorBoundary>
+                  <PrivateRoute onRequireAuth={handleOpenAuth}>
+                    <Profile />
+                  </PrivateRoute>
+                </ErrorBoundary>
               }
             />
+
             <Route
               path="/medication-tracker"
               element={
-                <PrivateRoute onRequireAuth={handleOpenAuth}>
-                  <MedicationTracker />
-                </PrivateRoute>
+                <ErrorBoundary>
+                  <PrivateRoute onRequireAuth={handleOpenAuth}>
+                    <MedicationTracker />
+                  </PrivateRoute>
+                </ErrorBoundary>
               }
             />
+
+            <Route
+              path="/my-dashboard"
+              element={
+                <ErrorBoundary>
+                  <PrivateRoute onRequireAuth={handleOpenAuth}>
+                    <MyDashboard />
+                  </PrivateRoute>
+                </ErrorBoundary>
+              }
+            />
+
+            {/* Fallback for unknown routes */}
+            <Route path="*" element={<div className="fallback">Page not found</div>} />
           </Routes>
         </div>
+
         <Footer />
       </div>
 
@@ -114,17 +159,15 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <ErrorBoundary>
-      <AuthProvider>
-        <DarkModeProvider>
-          <OverlayProvider>
-            <Router>
-              <AppContent />
-            </Router>
-          </OverlayProvider>
-        </DarkModeProvider>
-      </AuthProvider>
-    </ErrorBoundary>
+    <AuthProvider>
+      <DarkModeProvider>
+        <OverlayProvider>
+          <Router>
+            <AppContent />
+          </Router>
+        </OverlayProvider>
+      </DarkModeProvider>
+    </AuthProvider>
   );
 };
 
