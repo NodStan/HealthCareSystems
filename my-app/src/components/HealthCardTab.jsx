@@ -23,21 +23,21 @@ const HealthCardTab = () => {
         </h3>
         <ul className="symptoms-list">
         <li>
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg>
   Chest pain or discomfort
 </li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Shortness of breath</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentcolor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Fatigue and weakness</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Irregular heartbeat</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Dizziness or light-headedness</li>
         </ul>
@@ -62,25 +62,25 @@ const HealthCardTab = () => {
         Causes
       </h3>
       <ul className="symptoms-list">
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> High blood pressure</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> High cholesterol</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Smoking</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Diabetes</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Family history</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Age</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Stress</li>
       </ul>
@@ -104,22 +104,22 @@ const HealthCardTab = () => {
         Prevention
       </h3>
       <ul className="symptoms-list">
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Regular exercise</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Healthy diet low in salt, sugar and fat</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Maintaining healthy weight</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Not smoking</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Limiting alcohol consumption</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Regular health checkups</li>
       </ul>
@@ -144,16 +144,16 @@ const HealthCardTab = () => {
         Treatment
       </h3>
       <ul className="symptoms-list">
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Lifestyle changes</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Medications like statins, blood thinners</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Surgical procedures in some cases</li>
-        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="black" style={{ marginRight: "8px" }}>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: "8px" }}>
     <circle cx="12" cy="12" r="6" />
   </svg> Cardiac rehabilitation programs</li>
       </ul>
@@ -182,7 +182,7 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#1f2937"
+            stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -207,7 +207,7 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#1f2937"
+            stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -232,7 +232,7 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#1f2937"
+            stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -255,7 +255,7 @@ const HealthCardTab = () => {
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#1f2937"
+    stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -278,7 +278,7 @@ const HealthCardTab = () => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#1f2937"
+            stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

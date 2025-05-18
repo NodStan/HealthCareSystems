@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
 import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import OAuthButtons from "./0AuthButtons";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
-export default function LoginForm({ onSuccess }) {
+export default function LoginForm({ onSuccess, onOpenAuth }) {
   const { signIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -78,7 +79,6 @@ export default function LoginForm({ onSuccess }) {
   const handleGoogleSuccess = (response) => {
     const token = response.credential;
     console.log("Google login successful, token:", token);
-    // Here you can send the token to your backend or update the state
   };
 
   const handleGoogleError = (error) => {
@@ -147,9 +147,9 @@ export default function LoginForm({ onSuccess }) {
               <input type="checkbox" name="remember-me" className="checkbox" />
               Remember me
             </label>
-            <a href="#" className="forgot-password">
+            <span style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }} onClick={() => onOpenAuth("register")} className="forgot-password">
               Forgot your password?
-            </a>
+            </span>
           </div>
 
           <button type="submit" className="submit-button">

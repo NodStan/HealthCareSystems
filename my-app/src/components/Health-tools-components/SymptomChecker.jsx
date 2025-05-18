@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SymptomChecker.css';
 import { motion } from 'framer-motion';
 import { useDarkMode } from '../DarkModeContext';
 
 const SymptomChecker = () => {
   const { darkMode: isDarkMode } = useDarkMode();
+
+  const bodyParts = [
+    'Head',
+    'Chest',
+    'Abdomen',
+    'Back',
+    'Arms',
+    'Legs',
+    'Skin',
+    'Eyes',
+    'Ears',
+    'Throat',
+  ];
+  
+  const [selectedBodyPart, setSelectedBodyPart] = useState('');
   return (
     <div className={`symptom-checker ${isDarkMode ? 'dark' : ''}`}>
       <motion.div 
@@ -104,7 +119,7 @@ const SymptomChecker = () => {
 
             <div className="card-content">
               <div className="search-wrapper">
-                {/* <svg
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="search-icons"
                   viewBox="0 0 24 24"
@@ -116,34 +131,33 @@ const SymptomChecker = () => {
                 >
                   <circle cx="11" cy="11" r="8"></circle>
                   <path d="m21 21-4.3-4.3"></path>
-                </svg> */}
+                </svg>
                 <input
                   type="text"
                   placeholder="Search symptoms..."
-                  className="search-input"
+                  className="seearch-input"
                 />
               </div>
 
-              <div>
-                <label htmlFor="bodyPart" className="label">
-                  Or select area of the body
-                </label>
-                <button type="button" className="select-trigger">
-                  <span>Select body area</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="chevron-down"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M6 9l6 6 6-6"></path>
-                  </svg>
-                </button>
-              </div>
+              <div className="symptom-select-wrapper">
+  <label htmlFor="bodyPart" className="label">
+    Select area of the body
+  </label>
+  <select
+    id="bodyPart"
+    className="select"
+    value={selectedBodyPart}
+    onChange={(e) => setSelectedBodyPart(e.target.value)}
+  >
+    <option value="">-- Choose a body area --</option>
+    {bodyParts.map((part) => (
+      <option key={part} value={part}>
+        {part}
+      </option>
+    ))}
+  </select>
+</div>
+
 
               <div className="symptom-options">
                 <label className="label">Select all that apply:</label>

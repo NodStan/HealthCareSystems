@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
+import { useAuth } from './AuthContext';
 
 const Toast = ({ message, show }) => {
   return (
@@ -10,18 +11,16 @@ const Toast = ({ message, show }) => {
 };
 
 const Profile = () => {
+  // Initialize states with default or loaded from localStorage
+  const [age, setAge] = useState(30);
+  const [gender, setGender] = useState('Male');
   const [height, setHeight] = useState(175);
   const [weight, setWeight] = useState(70);
   const [bmi, setBmi] = useState(0);
+  const [bloodType, setBloodType] = useState('');
+  const [genotype, setGenotype] = useState('');
+  const [oxygenLevel, setOxygenLevel] = useState('');
   const [showToast, setShowToast] = useState(false);
-
-  useEffect(() => {
-    if (height && weight) {
-      const heightInMeters = height / 100;
-      const calculatedBmi = weight / (heightInMeters * heightInMeters);
-      setBmi(calculatedBmi.toFixed(1));
-    }
-  }, [height, weight]);
 
   const initialConditions = {
     Hypertension: false,
@@ -42,6 +41,36 @@ const Profile = () => {
   const [selectedConditions, setSelectedConditions] = useState(initialConditions);
   const [customConditions, setCustomConditions] = useState([]);
   const [condition, setCondition] = useState('');
+  const [hasFamilyHistory, setHasFamilyHistory] = useState(false);
+  const [familyHistoryText, setFamilyHistoryText] = useState('');
+  const { updateHealthProfile } = useAuth(); // Assuming useAuth is imported from AuthContext
+
+  useEffect(() => {
+    const savedProfile = localStorage.getItem('healthProfile');
+    if (savedProfile) {
+      const profile = JSON.parse(savedProfile);
+
+      setAge(profile.age || 30);
+      setGender(profile.gender || 'Male');
+      setHeight(profile.height || 175);
+      setWeight(profile.weight || 70);
+      setBloodType(profile.bloodType || '');
+      setGenotype(profile.genotype || '');
+      setOxygenLevel(profile.oxygenLevel || '');
+      setSelectedConditions(profile.selectedConditions || initialConditions);
+      setCustomConditions(profile.customConditions || []);
+      setHasFamilyHistory(profile.hasFamilyHistory || false);
+      setFamilyHistoryText(profile.familyHistoryText || '');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (height && weight) {
+      const heightInMeters = height / 100;
+      const calculatedBmi = weight / (heightInMeters * heightInMeters);
+      setBmi(calculatedBmi.toFixed(1));
+    }
+  }, [height, weight]);
 
   const handleCheckboxChange = (event) => {
     const { id, checked } = event.target;
@@ -74,16 +103,32 @@ const Profile = () => {
     }
   };
 
-  const [hasFamilyHistory, setHasFamilyHistory] = useState(false);
-
   const handleCheckboxChanges = () => {
     setHasFamilyHistory((prev) => !prev);
   };
 
   const handleSave = () => {
-    console.log('Profile saved');
+    const healthProfile = {
+      age,
+      gender,
+      height,
+      weight,
+      bmi,
+      bloodType,
+      genotype,
+      oxygenLevel,
+      selectedConditions,
+      customConditions,
+      hasFamilyHistory,
+      familyHistoryText,
+    };
+
+    localStorage.setItem('healthProfile', JSON.stringify(healthProfile));
+    updateHealthProfile(healthProfile);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000); // Hide after 3 seconds
+
+    console.log('Profile saved:', healthProfile);
   };
 
   const checkedConditions = Object.keys(selectedConditions).filter((key) => selectedConditions[key]);
@@ -104,11 +149,26 @@ const Profile = () => {
           <div className="form-grid">
             <div>
               <label htmlFor="age" className="form-label">Age</label>
-              <input type="number" id="age" defaultValue="30" min="1" max="120" required className="form-input" />
+              <input
+                type="number"
+                id="age"
+                value={age}
+                onChange={(e) => setAge(Number(e.target.value))}
+                min="1"
+                max="120"
+                required
+                className="form-input"
+              />
             </div>
             <div>
               <label htmlFor="gender" className="form-label">Gender</label>
-              <select id="gender" required className="form-input">
+              <select
+                id="gender"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                required
+                className="form-input"
+              >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
@@ -123,15 +183,40 @@ const Profile = () => {
           <div className="measurements-grid">
             <div className="input-group">
               <label htmlFor="height" className="input-label">Height (cm)</label>
-              <input type="number" id="height" value={height} onChange={(e) => setHeight(Number(e.target.value))} min="50" max="250" required className="input-field" />
+              <input
+                type="number"
+                id="height"
+                value={height}
+                onChange={(e) => setHeight(Number(e.target.value))}
+                min="50"
+                max="250"
+                required
+                className="input-field"
+              />
             </div>
             <div className="input-group">
               <label htmlFor="weight" className="input-label">Weight (kg)</label>
-              <input type="number" id="weight" value={weight} onChange={(e) => setWeight(Number(e.target.value))} min="1" max="500" step="0.1" required className="input-field" />
+              <input
+                type="number"
+                id="weight"
+                value={weight}
+                onChange={(e) => setWeight(Number(e.target.value))}
+                min="1"
+                max="500"
+                step="0.1"
+                required
+                className="input-field"
+              />
             </div>
             <div className="input-group">
               <label htmlFor="bmi" className="input-label">BMI (Calculated)</label>
-              <input type="number" id="bmi" value={bmi} readOnly className="input-field readonly" />
+              <input
+                type="number"
+                id="bmi"
+                value={bmi}
+                readOnly
+                className="input-field readonly"
+              />
               <p className="note">Automatically calculated from height and weight</p>
             </div>
           </div>
@@ -142,7 +227,12 @@ const Profile = () => {
           <div className="blood-info-grid">
             <div className="blood-info-field">
               <label htmlFor="bloodType">Blood Type</label>
-              <select id="bloodType" required>
+              <select
+                id="bloodType"
+                value={bloodType}
+                onChange={(e) => setBloodType(e.target.value)}
+                required
+              >
                 <option value="">Select Blood Type</option>
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
@@ -157,7 +247,12 @@ const Profile = () => {
 
             <div className="blood-info-field">
               <label htmlFor="genotype">Genotype</label>
-              <select id="genotype" required>
+              <select
+                id="genotype"
+                value={genotype}
+                onChange={(e) => setGenotype(e.target.value)}
+                required
+              >
                 <option value="">Select Genotype</option>
                 <option value="AA">AA</option>
                 <option value="AS">AS</option>
@@ -170,7 +265,15 @@ const Profile = () => {
 
             <div className="blood-info-field">
               <label htmlFor="oxygenLevel">Oxygen (O₂) Level (%)</label>
-              <input type="number" id="oxygenLevel" min="70" max="100" step="0.1" />
+              <input
+                type="number"
+                id="oxygenLevel"
+                value={oxygenLevel}
+                onChange={(e) => setOxygenLevel(e.target.value)}
+                min="70"
+                max="100"
+                step="0.1"
+              />
             </div>
           </div>
         </div>

@@ -13,8 +13,8 @@ const HealthDashboard = () => {
     <div className="my-health-dashboard">
       <div className="my-health-header">
         <div className="header-text">
-          <h1 className="title">My Health</h1>
-          <p className="subtitle">Your personalized health dashboard and recommendations</p>
+          <h1 className="titlee">My Health</h1>
+          <p className="subtitles">Your personalized health dashboard and recommendations</p>
         </div>
         <div className="toggle-group" role="group" dir="ltr" tabIndex={0}>
           {toggles.map((toggle) => (
@@ -28,7 +28,7 @@ const HealthDashboard = () => {
         <div className="ccards">
           <div className="card-content">
             <div className="card-inner">
-              <div className="icon-circles">
+              <div className="icon-circle">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="smile-plus-icon">
                   <path d="M22 11v1a10 10 0 1 1-9-10" />
                   <path d="M8 14s1.5 2 4 2 4-2 4-2" />
@@ -75,9 +75,22 @@ const HealthDashboard = () => {
           <div className="card-content">
             <div className="card-inner">
               <div className="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="thermometer-icon">
-                <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" />
-              </svg>
+              <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="thermometer-icon"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="8" x2="12" y2="12" />
+    <line x1="12" y1="16" x2="12.01" y2="16" />
+  </svg>
               </div>
               <div className="title-wrapper">
                 <h3 className="titles">Symptom Checker</h3>
@@ -95,9 +108,22 @@ const HealthDashboard = () => {
           <div className="card-content">
             <div className="card-inner">
               <div className="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="thermometer-icon">
-                <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z" />
-              </svg>
+              <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="thermometer-icon"
+  >
+    <line x1="12" y1="20" x2="12" y2="10" />
+    <line x1="18" y1="20" x2="18" y2="4" />
+    <line x1="6" y1="20" x2="6" y2="16" />
+  </svg>
               </div>
               <div className="title-wrapper">
                 <h3 className="titles">Health Calculators</h3>
@@ -182,7 +208,11 @@ const HealthDashboard = () => {
         </div>
         <div className="caard-content">
           
-          <p className="values"><p className="labels">Progress</p>7500 / 10000 steps</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>7500 / 10000 steps</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%"}} />
           </div>
@@ -211,7 +241,11 @@ const HealthDashboard = () => {
           </h3>
         </div>
         <div className="caard-content">
-          <p className="values"><p className="labels">Progress</p>6 / 8 cups</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>6 / 8 glasses</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%" }} />
           </div>
@@ -239,7 +273,11 @@ const HealthDashboard = () => {
           </h3>
         </div>
         <div className="caard-content">
-          <p className="values"><p className="labels">Progress</p>3 / 5 days</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>3 / 5 days</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%" }} />
           </div>
@@ -267,7 +305,11 @@ const HealthDashboard = () => {
           </h3>
         </div>
         <div className="caard-content">
-          <p className="values"><p className="labels">Progress</p>7 / 8 hours</p>
+        <div className="values">
+  <p className="labels">Pressure</p>
+  <p>7 / 8 hours</p>
+</div>
+
           <div className="progress-wrapper">
             <div className="progress-bars" style={{ width: "75%" }} />
           </div>

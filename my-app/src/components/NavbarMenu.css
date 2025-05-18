@@ -1,17 +1,9 @@
-/* Navbar wrapper (optional, can be used for centralizing if needed) */
 .navbar-container {
   position: absolute;
-  top: 4.1rem; /* Exactly below the header (desktop) */
+  top: 4.1rem;
   left: 0;
   width: 100%;
   z-index: 1000;
-}
-
-/* Mobile-specific offset */
-@media (max-width: 768px) {
-  .navbar-container {
-    top: 5rem;
-  }
 }
 
 .navbar-menu {
@@ -23,12 +15,10 @@
   z-index: 999;
 }
 
-/* Hide the menu when closed */
 .navbar-menu.closed {
   display: none;
 }
 
-/* Nav links and submenu items */
 .navv-link,
 .nav-sublink {
   display: block;
@@ -41,8 +31,9 @@
 
 .navv-link:hover,
 .nav-sublink:hover {
-  background-color: #f0f0f0;
-  color: #222;
+  background-color: #0ea2f1;
+  color: #fff;
+  text-decoration: none;
 }
 
 .navv-link.active {
@@ -51,7 +42,11 @@
   border-left: 4px solid #007BFF;
 }
 
-/* Section titles */
+.navv-link.active:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
 .nav-section-title {
   margin-top: 16px;
   padding: 10px 12px;
@@ -61,14 +56,12 @@
   text-transform: uppercase;
 }
 
-/* Submenu */
 .nav-submenu {
   margin-left: 16px;
   display: flex;
   flex-direction: column;
 }
 
-/* Sign-out button */
 .signout-button {
   margin-top: 16px;
   background: none;

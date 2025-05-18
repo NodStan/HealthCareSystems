@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './HealthToolsContainer.css';
 import { useDarkMode } from '../DarkModeContext';
@@ -40,7 +41,7 @@ const HealthToolsContainer = () => {
             <p className="feature-description">
               Calculate key health metrics like BMI, calorie needs, target heart rate, and more.
             </p>
-            <a href="/health-calculators" className="feature-link">
+            <Link to="/health-calculators" className="feature-link">
               Try calculators
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +58,7 @@ const HealthToolsContainer = () => {
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
-            </a>
+            </Link>
           </motion.div>
 
           <motion.div
@@ -88,7 +89,7 @@ const HealthToolsContainer = () => {
             <p className="feature-description">
               Identify possible causes of your symptoms and get guidance on next steps.
             </p>
-            <a href="/symptom-checker" className="feature-link">
+            <Link to="/symptom-checker" className="feature-link">
               Check symptoms
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +106,7 @@ const HealthToolsContainer = () => {
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
-            </a>
+            </Link>
           </motion.div>
 
           <motion.div
@@ -133,7 +134,7 @@ const HealthToolsContainer = () => {
             <p className="feature-description">
               Track your health journey with personalized recommendations and progress monitoring.
             </p>
-            <a href="/dashboard" className="feature-link">
+            <Link to="/health-dashboard" className="feature-link">
               View dashboard
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +151,7 @@ const HealthToolsContainer = () => {
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

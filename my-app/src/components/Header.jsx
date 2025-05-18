@@ -86,6 +86,7 @@ const Header = () => {
                     <div className="dropdown-menu">
                       <Link to="/health-dashboard" className="dropdown-item">Health Dashboard</Link>
                       <Link to="/medication-tracker" className="dropdown-item">Medication Tracker</Link>
+                      <Link to="/my-dashboard" className="dropdown-item">My Dashboard</Link>
                     </div>
                   </div>
                 )}
@@ -168,44 +169,63 @@ const Header = () => {
       </nav>
 
       {dialogOpen && (
-        <div className="search-popup-overlay">
-          <div className="search-popup">
-            <div className="popup-header">
-              <div className="search-input-container">
-                <input
-                  type="text"
-                  className="search-input"
-                  placeholder="Search health topics..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-                <button onClick={closeDialog} className="close-popup">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="search-results">
-              <div className="topic-cover">
-                <p className="topic">Health Topics</p>
-              </div>
-
-              {filteredSuggestions.length > 0 ? (
-                filteredSuggestions.map((suggestion, index) => (
-                  <div key={index} className="search-result-item">
-                    {suggestion}
-                  </div>
-                ))
-              ) : (
-                <div className="no-results">No results found</div>
-              )}
-            </div>
+  <div className="search-popup-overlay">
+    <div className="search-popup">
+      <div className="popup-header">
+        <div className="search-input-container">
+          <div className="input-wrapper">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="searches-icons"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search health topics..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
           </div>
+          <button onClick={closeDialog} className="close-popup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
         </div>
-      )}
+      </div>
+
+      <div className="search-results">
+        <div className="topic-cover">
+          <p className="topic">Health Topics</p>
+        </div>
+
+        {filteredSuggestions.length > 0 ? (
+          filteredSuggestions.map((suggestion, index) => (
+            <div key={index} className="search-result-item">
+              {suggestion}
+            </div>
+          ))
+        ) : (
+          <div className="no-results">No results found</div>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+
 
       {signinOpen && !isAuthenticated && (
         <div className="signin-overlay">
