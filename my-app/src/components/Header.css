@@ -532,7 +532,7 @@
 .profile-link {
   padding: 0.5rem;
   border-radius: 9999px;
-  color: ;
+  color:firebrick ;
   transition: background-color 0.2s, color 0.2s;
   display: inline-flex;
   align-items: center;
