@@ -162,10 +162,10 @@ const Header = () => {
         </div>
 
         {menuOpen && (
-          <div className="mobile-navbar-menu">
-            <NavbarMenu />
-          </div>
-        )}
+  <div className="mobile-navbar-menu">
+    <NavbarMenu onLinkClick={() => setMenuOpen(false)} />
+  </div>
+)}
       </nav>
 
       {dialogOpen && (

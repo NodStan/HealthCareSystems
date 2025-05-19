@@ -1,36 +1,36 @@
-.main {
+.nutrition-main {
     flex-grow: 1;
   }
   
-  .container {
+  .nutrition-container {
     max-width: 1120px;
     margin: 0 auto;
     padding: 2rem 1rem;
   }
   
-  .header {
+  .nutrition-header {
     text-align: center;
     margin-bottom: 3rem;
   }
   
-  .title {
+  .nutrition-title {
     font-size: 2.5rem;
     font-weight: bold;
     color: #1a1a1a;
     margin-bottom: 1rem;
   }
   
-  .subtitle {
+  .nutrition-subtitle {
     color: #666;
     max-width: 640px;
     margin: 0 auto;
   }
   
-  .tabs {
+  .nutrition-tabs {
     margin-bottom: 3rem;
   }
   
-  .tab-list {
+  .nutrition-tab-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background: #f2f2f2;
@@ -38,7 +38,7 @@
     overflow: hidden;
   }
   
-  .tab-trigger {
+  .nutrition-tab-trigger {
     padding: 0.75rem;
     font-size: 0.9rem;
     font-weight: 500;
@@ -48,23 +48,23 @@
     transition: background 0.2s;
   }
   
-  .tab-trigger.active {
+  .nutrition-tab-trigger.active {
     background: white;
     color: #000;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .tab-content {
+  .nutrition-tab-content {
     margin-top: 1.5rem;
   }
   
-  .card-grid {
+  .nutrition-card-grid {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   
-  .card {
+  .nutrition-card {
     border: 1px solid #ddd;
     border-radius: 0.5rem;
     background: #fff;
@@ -73,43 +73,43 @@
     transition: box-shadow 0.3s;
   }
   
-  .card:hover {
+  .nutrition-card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  .card-header {
+  .nutrition-card-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 1rem;
   }
   
-  .card-title {
+  .nutrition-card-title {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
   }
   
-  .card-content p {
+  .nutrition-card-content p {
     color: #777;
   }
   
   /* Icons can be customized or replaced with real SVGs/images */
-  .icon {
+  .nutrition-icon {
     width: 24px;
     height: 24px;
     margin-bottom: 0.5rem;
   }
   
-  .salad-icon {
+  .nutrition-salad-icon {
     background: url('/icons/salad.svg') no-repeat center/contain;
   }
   
-  .book-icon {
+  .nutrition-book-icon {
     background: url('/icons/book.svg') no-repeat center/contain;
   }
   
-  .search-icon {
+  .nutrition-search-icon {
     background: url('/icons/search.svg') no-repeat center/contain;
   }
   

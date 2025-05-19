@@ -213,6 +213,11 @@
   color: #fff;
 }
 
+.content.dark .navbar-container .navbar-menu{
+  background-color: #020817;
+  color: #fff;
+}
+
 .content.dark .my-health-container .cardd .info-box{
   background-color: #1E293B;
   color: #fff;

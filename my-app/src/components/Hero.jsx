@@ -25,9 +25,7 @@ function Hero({ onOpenAuth }) {
                 <CallToAction onOpenAuth={onOpenAuth}/>
                 </div>
                 <div>
-    <h1>Welcome to HealthApp</h1>
-    <Link to="/mood-tracker">Try the Mood Tracker</Link>
-  </div>
+                </div>
             </div>
         );
     }
