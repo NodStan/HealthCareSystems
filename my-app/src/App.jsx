@@ -70,9 +70,9 @@ const AppContent = () => {
             <Route path="/health-topics" element={<HealthTopics />} />
             <Route path="/health-search" element={<SearchConditions />} />
             <Route path="/health-tools" element={<HealthTools />} />
-            <Route path="/community-forum" element={<Community />} />
+            <Route path="/community-forum" element={<ErrorBoundary><Community /></ErrorBoundary>} />
             <Route path="/assistant" element={<Assistant />} />
-            <Route path="/symptom-checker" element={<SymptomChecker />} />
+            <Route path="/symptom-checker" element={<ErrorBoundary><SymptomChecker /></ErrorBoundary>} />
             <Route path="/health-calculators" element={<HealthCalculators />} />
             <Route path="/nutrition-guide" element={<NutritionGuide />} />
             <Route path="/emergency-guide" element={<EmergencyGuide />} />

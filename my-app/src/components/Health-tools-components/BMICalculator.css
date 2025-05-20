@@ -155,3 +155,45 @@ input[type='number'] {
   background-color: #0EA2F1;
   color: white;
 }
+
+.calculators-bmi-result {
+  background-color: #fff;
+  color: #222;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.calculators-bmi-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.calculators-bmi-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.calculators-bmi-category {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.calculators-bmi-category.normal {
+  color: #16a34a; /* Green */
+}
+
+.calculators-bmi-category.underweight {
+  color: #d97706; /* Amber */
+}
+
+.calculators-bmi-category.overweight,
+.calculators-bmi-category.obesity {
+  color: #dc2626; /* Red */
+}

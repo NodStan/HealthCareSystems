@@ -13,7 +13,7 @@ const Header = () => {
   const [signinOpen, setSigninOpen] = useState(false);
   const [query, setQuery] = useState('');
   const location = useLocation();
-  const navigate = useNavigate(); // 🆕 Added navigate
+  const navigate = useNavigate();
   const { darkMode, toggleTheme } = useDarkMode();
   const { isAuthenticated, signOut } = useAuth();
 
