@@ -187,7 +187,7 @@ const SearchConditions = () => {
     } finally {
       setLoading(false);
     }
-  };
+  };x
 
   return (
     <div className="containers">
