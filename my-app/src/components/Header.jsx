@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
 import './NavbarMenu.css';
@@ -12,10 +12,22 @@ const Header = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [signinOpen, setSigninOpen] = useState(false);
   const [query, setQuery] = useState('');
+
+  const [suggestions, setSuggestions] = useState([
+    'Cardiovascular Health',
+    'Diabetes Management',
+    'Mental Health',
+    'Nutrition & Diet',
+    'Fitness & Exercise',
+    'Preventive Care',
+  ]);
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   const { darkMode, toggleTheme } = useDarkMode();
   const { isAuthenticated, signOut } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
 
@@ -23,6 +35,7 @@ const Header = () => {
   const closeDialog = () => {
     setDialogOpen(false);
     setQuery('');
+    setFilteredSuggestions([]);
   };
 
   const openSignin = () => setSigninOpen(true);
@@ -33,24 +46,44 @@ const Header = () => {
     ['/symptom-checker', '/health-calculators', '/nutrition-guide', '/exercise-library', '/emergency-guide']
       .some((toolPath) => location.pathname.startsWith(toolPath));
 
-  const suggestions = [
-    'Cardiovascular Health',
-    'Diabetes Management',
-    'Mental Health',
-    'Nutrition & Diet',
-    'Fitness & Exercise',
-    'Preventive Care',
-  ];
-
-  const filteredSuggestions = suggestions.filter(item =>
-    item.toLowerCase().includes(query.toLowerCase())
-  );
-
   const handleSignOut = () => {
     signOut();
     setSigninOpen(false);
     navigate('/');
   };
+
+  useEffect(() => {
+    if (!query.trim()) {
+      setFilteredSuggestions([]);
+      return;
+    }
+  
+    const timer = setTimeout(() => {
+      const fetchSuggestions = async () => {
+        setLoading(true);
+        try {
+          const response = await fetch(`http://localhost:8091/searches/get/${query.trim()}`);
+          if (!response.ok) throw new Error('No results');
+          const data = await response.json();
+          const resultsArray = Array.isArray(data) ? data : [data];
+          const names = resultsArray.map((item) => item.name);
+          setFilteredSuggestions(names);
+          setError('');
+        } catch (err) {
+          setFilteredSuggestions([]);
+          setError('No results found');
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchSuggestions();
+    }, 300); // Debounce delay
+  
+    return () => clearTimeout(timer); // Cancel previous search on new keystroke
+  }, [query]);
+  
+  
 
   return (
     <header className={`header ${darkMode ? 'dark-mode' : ''}`}>
@@ -69,7 +102,7 @@ const Header = () => {
                 <Link to="/" className={`nav-link ${isActive('/') ? 'active-link' : ''}`}><p>Home</p></Link>
                 <Link to="/health-topics" className={`nav-link ${isActive('/health-topics') ? 'active-link' : ''}`}><p>Health Topics</p></Link>
                 <Link to="/health-search" className={`nav-link ${isActive('/health-search') ? 'active-link' : ''}`}><p>Search Conditions</p></Link>
- 
+
                 <div className={`dropdown ${isHealthToolsActive() ? 'active-links' : ''}`}>
                   <p className="navs-link dropdown-trigger">Health Tools</p>
                   <div className="dropdown-menu">
@@ -126,7 +159,6 @@ const Header = () => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    // className="icon"
                   >
                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                     <circle cx="12" cy="7" r="4" />
@@ -162,69 +194,84 @@ const Header = () => {
         </div>
 
         {menuOpen && (
-  <div className="mobile-navbar-menu">
-    <NavbarMenu onLinkClick={() => setMenuOpen(false)} />
-  </div>
-)}
+          <div className="mobile-navbar-menu">
+            <NavbarMenu onLinkClick={() => setMenuOpen(false)} />
+          </div>
+        )}
       </nav>
 
       {dialogOpen && (
-  <div className="search-popup-overlay">
-    <div className="search-popup">
-      <div className="popup-header">
-        <div className="search-input-container">
-          <div className="input-wrapper">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="searches-icons"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.3-4.3" />
-            </svg>
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search health topics..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-          </div>
-          <button onClick={closeDialog} className="close-popup">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
+        <div className="search-popup-overlay">
+          <div className="search-popup">
+            <div className="popup-header">
+              <div className="search-input-container">
+                <div className="input-wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="searches-icons"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
+                  <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search health topics..."
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                  />
+                </div>
+                <button onClick={closeDialog} className="close-popup">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                   
 
-      <div className="search-results">
-        <div className="topic-cover">
-          <p className="topic">Health Topics</p>
-        </div>
-
-        {filteredSuggestions.length > 0 ? (
-          filteredSuggestions.map((suggestion, index) => (
-            <div key={index} className="search-result-item">
-              {suggestion}
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
             </div>
-          ))
-        ) : (
-          <div className="no-results">No results found</div>
-        )}
-      </div>
-    </div>
-  </div>
+          </div>
+
+          <div className="search-results">
+            <div className="topic-cover">
+              <p className="topic">Health Topics</p>
+            </div>
+
+            {loading && <p className="search-loading">Loading...</p>}
+{error && <p className="search-error">{error}</p>}
+{filteredSuggestions.length > 0 && (
+  <ul className="suggestion-list">
+    {filteredSuggestions.map((suggestion, index) => (
+      <li key={index} onClick={() => {
+        navigate(`/health-topics/${encodeURIComponent(suggestion)}`);
+        closeDialog();
+      }}>
+        {suggestion}
+      </li>
+    ))}
+  </ul>
 )}
+
+          </div>
+        </div>
+      </div>
+    )}
 
 
       {signinOpen && !isAuthenticated && (
