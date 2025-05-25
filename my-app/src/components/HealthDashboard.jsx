@@ -103,7 +103,7 @@ const HealthDashboard = () => {
         </div>
       </Link>
 
-      <Link to="/medication-tracker">
+      <Link to="/health-calculators">
         <div className="ccards">
           <div className="card-content">
             <div className="card-inner">

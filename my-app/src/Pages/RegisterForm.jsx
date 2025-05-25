@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AuthModal.css"; // Import your CSS file
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const RegisterForm = () => {
     terms: false,
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -19,10 +22,43 @@ const RegisterForm = () => {
     setFormData((prevData) => ({ ...prevData, terms: e.target.checked }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // handle form submission
+  
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+  
+    try {
+      const response = await fetch("http://localhost:8099/home/createuser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+  
+      if (response.ok) {
+        alert("User registered successfully!");
+        // Optionally reset form or redirect
+      } else if (response.status === 409) {
+        alert("Email already exists.");
+      } else if (response.status === 400) {
+        alert("Username already exists.");
+      } else {
+        alert("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
+   
 
   return (
     <div className="register-form-container">
@@ -56,7 +92,7 @@ const RegisterForm = () => {
         <div className="form-group">
           <label htmlFor="password" className="label">Password</label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="password"
             name="password"
             value={formData.password}
@@ -64,12 +100,19 @@ const RegisterForm = () => {
             className="input"
             required
           />
+          <span
+                          className="password-toggle-icon"
+                          onClick={() => setShowPassword(!showPassword)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+                        </span>
         </div>
 
         <div className="form-group">
           <label htmlFor="confirmPassword" className="label">Confirm password</label>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}
@@ -77,6 +120,13 @@ const RegisterForm = () => {
             className="input"
             required
           />
+          <span
+                          className="password-toggle-icon"
+                          onClick={() => setShowPassword(!showPassword)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+                        </span>
         </div>
 
         <div className="form-groups">

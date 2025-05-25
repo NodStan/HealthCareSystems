@@ -340,7 +340,7 @@
     font-size: 14px;
     border-radius: 5px;
     animation: slideDown 0.3s ease-out forwards;
-    z-index: 9999;
+    z-index: 99999;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   

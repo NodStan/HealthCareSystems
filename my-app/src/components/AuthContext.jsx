@@ -1,4 +1,3 @@
-// AuthContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
@@ -13,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const storedAuth = localStorage.getItem('isAuthenticated');
       const storedUser = localStorage.getItem('healthhub-user');
-
+  
       if (storedAuth === 'true' && storedUser) {
         setIsAuthenticated(true);
         setUser(JSON.parse(storedUser));
@@ -22,6 +21,7 @@ export const AuthProvider = ({ children }) => {
       console.error('Error accessing localStorage:', error);
     }
   }, []);
+  
 
   // Validate email to only allow Gmail or Yahoo
   const validateEmail = (email) => {
@@ -35,8 +35,8 @@ export const AuthProvider = ({ children }) => {
     return regex.test(password);
   };
 
-  // Handle sign-in with validation and mock user setup
-  const signIn = (email, password) => {
+  // Handle sign-in by calling backend
+  const signIn = async (email, password) => {
     if (!validateEmail(email)) {
       setAuthError('Email must be a valid Gmail or Yahoo address');
       return false;
@@ -45,31 +45,41 @@ export const AuthProvider = ({ children }) => {
       setAuthError('Password must be at least 8 characters long, contain a number and a special character "!"');
       return false;
     }
-
-    const mockUser = {
-      id: 'user-' + Math.floor(Math.random() * 10000),
-      name: email.split('@')[0],
-      email,
-      healthProfile: email === 'demo@healthhub.com' ? {
-        age: 35,
-        gender: 'Male',
-        height: 175,
-        weight: 70,
-        bmi: 22.9,
-        bloodType: 'A+',
-        genotype: 'AA',
-        oxygenLevel: 98,
-        conditions: ['Mild Hypertension', 'Seasonal Allergies']
-      } : undefined
-    };
-
-    setUser(mockUser);
-    setIsAuthenticated(true);
-    setAuthError('');
-    localStorage.setItem('isAuthenticated', 'true');
-    localStorage.setItem('healthhub-user', JSON.stringify(mockUser));
-    return true;
+  
+    try {
+      const response = await fetch('http://localhost:8099/home/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok && result.message === 'Login successful') {
+        const loggedInUser = {
+          username: result.username,
+          email: result.email,
+        };
+  
+        setUser(loggedInUser);
+        setIsAuthenticated(true);
+        setAuthError('');
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('healthhub-user', JSON.stringify(loggedInUser));
+        return true;
+      } else {
+        setAuthError('Invalid email or password');
+        return false;
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setAuthError('Failed to connect to server');
+      return false;
+    }
   };
+  
 
   // Handle sign-out
   const signOut = () => {
@@ -80,13 +90,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Update health profile data
-  const updateHealthProfile = (healthProfile) => {
-    if (user) {
-      const updatedUser = { ...user, healthProfile };
-      setUser(updatedUser);
-      localStorage.setItem('healthhub-user', JSON.stringify(updatedUser));
-    }
+  const updateHealthProfile = (updatedUser) => {
+    setUser(updatedUser);
+    localStorage.setItem('healthhub-user', JSON.stringify(updatedUser));
   };
+  
 
   return (
     <AuthContext.Provider
@@ -96,7 +104,7 @@ export const AuthProvider = ({ children }) => {
         signOut,
         authError,
         user,
-        updateHealthProfile
+        updateHealthProfile,
       }}
     >
       {children}

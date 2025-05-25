@@ -177,18 +177,97 @@ const SymptomChecker = ({
         </div>
 
         <motion.div 
+          className="progress-section"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <div className="progress-labels">
+            <span>Start</span>
+            <span>Symptoms</span>
+            <span>Details</span>
+            <span>Results</span>
+          </div>
+
+          <div
+            className="progress-bar"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="20"
+          >
+            <div
+              className="progress-indicator"
+              style={{ transform: 'translateX(-80%)' }}
+            ></div>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          className="emergency-card-wrapper"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <div className="emergency-card">
+            <div className="cards-header">
+              <div className="header-content">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="alert-icon"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <h3 className="card-titles">Emergency Warning</h3>
+              </div>
+              <div className="card-content">
+              <p className="card-text">
+                If you're experiencing severe chest pain, difficulty breathing,
+                severe bleeding, or other life-threatening symptoms, please call
+                emergency services (911) or go to the nearest emergency room immediately.
+              </p>
+            </div>
+            </div>
+            
+          </div>
+        </motion.div>
+
+        <motion.div 
           className="symptom-checker-container"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <div className="checker-container">
+          <div className="card">
             {step === 1 && (
-              <div className="step1-container">
-                <h2>Step 1: Select Your Symptoms</h2>
-                <p>Choose the symptoms you're experiencing either by searching or selecting a body area.</p>
+              <div className="card-headers">
+                <h2 className="card-titles">Step 1: Select Your Symptoms</h2>
+                <p className="card-description">Choose the symptoms you're experiencing either by searching or selecting a body area.</p>
+                <div className="search-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="search-icons"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.3-4.3"></path>
+                </svg>
 
-                <div className="search-container">
                   <input
                     type="text"
                     placeholder="Search symptoms..."
@@ -197,12 +276,12 @@ const SymptomChecker = ({
                       setSearchQuery(e.target.value);
                       setSelectedBodyPart(""); // clear body part if searching
                     }}
-                    className="search-input"
+                    className="seearch-input"
                   />
                 </div>
 
                 <div className="bodypart-select">
-                  <label htmlFor="bodyPartSelect">Or select area of the body:</label>
+                  <label htmlFor="bodyPartSelect">Or select area of the body</label>
                   <select
                     id="bodyPartSelect"
                     value={selectedBodyPart}
@@ -220,8 +299,8 @@ const SymptomChecker = ({
                   </select>
                 </div>
 
-                <div className="symptom-list">
-                  <label>Select all that apply:</label>
+                <div className="symptom-options">
+                  <label className="label">Select all that apply:</label>
                   {filteredSymptoms.length === 0 && searchQuery && (
                     <p className="no-results">No symptoms found for "{searchQuery}"</p>
                   )}
@@ -265,8 +344,8 @@ const SymptomChecker = ({
                   </div>
                 )}
 
-                <div className="buttons">
-                  <button type="button" onClick={handleStartOver} className="btn-clear">
+                <div className="card-footers">
+                  <button type="button" onClick={handleStartOver} className="btn-outline">
                     Clear All
                   </button>
 
@@ -274,7 +353,7 @@ const SymptomChecker = ({
                     type="button"
                     onClick={handleContinue}
                     disabled={selectedSymptoms.length === 0}
-                    className="btn-continue"
+                    className="btn-primary"
                   >
                     Continue
                   </button>

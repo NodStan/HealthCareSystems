@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
-import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext'; // Assuming this provides user info & updateHealthProfile
 
 const Toast = ({ message, show }) => {
   return (
@@ -11,7 +12,6 @@ const Toast = ({ message, show }) => {
 };
 
 const Profile = () => {
-  // Initialize states with default or loaded from localStorage
   const [age, setAge] = useState(30);
   const [gender, setGender] = useState('Male');
   const [height, setHeight] = useState(175);
@@ -21,6 +21,8 @@ const Profile = () => {
   const [genotype, setGenotype] = useState('');
   const [oxygenLevel, setOxygenLevel] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [errorToast, setErrorToast] = useState('');
+  const navigate = useNavigate();
 
   const initialConditions = {
     Hypertension: false,
@@ -43,7 +45,7 @@ const Profile = () => {
   const [condition, setCondition] = useState('');
   const [hasFamilyHistory, setHasFamilyHistory] = useState(false);
   const [familyHistoryText, setFamilyHistoryText] = useState('');
-  const { updateHealthProfile } = useAuth(); // Assuming useAuth is imported from AuthContext
+  const { user, updateHealthProfile } = useAuth();
 
   useEffect(() => {
     const savedProfile = localStorage.getItem('healthProfile');
@@ -107,8 +109,15 @@ const Profile = () => {
     setHasFamilyHistory((prev) => !prev);
   };
 
-  const handleSave = () => {
-    const healthProfile = {
+  const handleSave = async () => {
+    const medicalConditions = [
+      ...Object.keys(selectedConditions).filter((key) => selectedConditions[key]),
+      ...customConditions,
+    ];
+
+    const updatePayload = {
+      username: user.username,
+      email: user.email,
       age,
       gender,
       height,
@@ -117,25 +126,54 @@ const Profile = () => {
       bloodType,
       genotype,
       oxygenLevel,
-      selectedConditions,
-      customConditions,
-      hasFamilyHistory,
+      medicalConditions,
+      familyMedicalHistory: hasFamilyHistory,
       familyHistoryText,
     };
 
-    localStorage.setItem('healthProfile', JSON.stringify(healthProfile));
-    updateHealthProfile(healthProfile);
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000); // Hide after 3 seconds
+    try {
+      const response = await fetch(`http://localhost:8099/home/user/${user.username}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatePayload),
+      });
 
-    console.log('Profile saved:', healthProfile);
+      if (!response.ok) {
+        const errorData = await response.text();
+        setErrorToast(`Failed to save profile: ${errorData || response.statusText}`);
+        setTimeout(() => setErrorToast(''), 4000);
+        return;
+      }
+
+      const savedUser = await response.json();
+      updateHealthProfile(savedUser);
+
+      // ✅ Navigate to dashboard and indicate update
+      navigate('/my-dashboard', { state: { refresh: true } });
+
+      // Optional: toast after navigation if dashboard expects it
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+
+      console.log('Profile saved:', savedUser);
+    } catch (error) {
+      setErrorToast('Error saving profile. Please try again.');
+      setTimeout(() => setErrorToast(''), 4000);
+      console.error('Save profile error:', error);
+    }
   };
+  
+  
+  
 
   const checkedConditions = Object.keys(selectedConditions).filter((key) => selectedConditions[key]);
 
   return (
     <div className="profile-background">
       <Toast message="Health profile saved successfully!" show={showToast} />
+      <Toast message={errorToast} show={!!errorToast} />
       <div className="profile-container">
         <div className="health-header">
           <h1 className="health-title">Health Profile</h1>
@@ -346,11 +384,14 @@ const Profile = () => {
                 Please provide information about significant medical conditions in your immediate family.
               </p>
               <textarea
-                id="familyHistory"
-                rows={4}
-                placeholder="E.g., Mother had diabetes, Father with hypertension, etc."
-                className="custom-textarea"
-              />
+  id="familyHistory"
+  rows={4}
+  placeholder="E.g., Mother had diabetes, Father with hypertension, etc."
+  className="custom-textarea"
+  value={familyHistoryText}
+  onChange={(e) => setFamilyHistoryText(e.target.value)}
+/>
+
             </div>
           )}
         </div>

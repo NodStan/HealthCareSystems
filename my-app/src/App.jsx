@@ -159,7 +159,8 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
       <DarkModeProvider>
         <OverlayProvider>
           <Router>
@@ -168,6 +169,7 @@ const App = () => {
         </OverlayProvider>
       </DarkModeProvider>
     </AuthProvider>
+    </ErrorBoundary>
   );
 };
 

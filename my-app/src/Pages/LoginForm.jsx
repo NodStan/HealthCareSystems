@@ -18,51 +18,11 @@ export default function LoginForm({ onSuccess, onOpenAuth }) {
     e.preventDefault();
     try {
       setError("");
-
-      // Email validation
-      if (!email.includes("@")) {
-        setError("Email is missing '@' symbol.");
-        setPopupVisible(true);
-        return;
-      }
-
-      if (!email.endsWith(".com")) {
-        setError("Email must end with '.com'.");
-        setPopupVisible(true);
-        return;
-      }
-
-      const domain = email.split("@")[1];
-      if (domain !== "gmail.com" && domain !== "yahoo.com") {
-        setError("Email must be a Gmail or Yahoo address.");
-        setPopupVisible(true);
-        return;
-      }
-
-      if (password.length < 8) {
-        setError("Password must be at least 8 characters long.");
-        setPopupVisible(true);
-        return;
-      }
-
-      if (!/\d/.test(password)) {
-        setError("Password must include at least one number.");
-        setPopupVisible(true);
-        return;
-      }
-
-      if (!/[!@#$%^&*]/.test(password)) {
-        setError("Password must include at least one special character (!@#$%^&*).");
-        setPopupVisible(true);
-        return;
-      }
-
-      const success = await signIn(email, password); // Await the signIn function
+      const success = await signIn(email, password);
       if (!success) {
         setError("Invalid email or password.");
         setPopupVisible(true);
       } else {
-        // On successful login, invoke the onSuccess callback (if passed from parent)
         onSuccess?.();
       }
     } catch (err) {
@@ -147,7 +107,11 @@ export default function LoginForm({ onSuccess, onOpenAuth }) {
               <input type="checkbox" name="remember-me" className="checkbox" />
               Remember me
             </label>
-            <span style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }} onClick={() => onOpenAuth("register")} className="forgot-password">
+            <span
+              style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}
+              onClick={() => onOpenAuth("register")}
+              className="forgot-password"
+            >
               Forgot your password?
             </span>
           </div>
