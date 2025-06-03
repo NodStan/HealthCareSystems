@@ -24,7 +24,7 @@ const HealthDashboard = () => {
         </div>
       </div>
     <div className="grid-container">
-      <Link to="/mood-tracker">
+      <Link to="/my-dashboard">
         <div className="ccards">
           <div className="card-content">
             <div className="card-inner">

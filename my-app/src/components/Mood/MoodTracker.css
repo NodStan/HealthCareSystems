@@ -59,11 +59,24 @@
   .mood-title {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--foreground);
+  }
+
+  @media screen and (max-width: 768px) {
+    .mood-title {
+      margin-bottom: 0.5rem;
+    }
+    
   }
   
   .mood-subtitle {
     color: var(--muted-foreground);
+  }
+
+  @media screen and (max-width: 768px) {
+    .mood-subtitle {
+      margin: 0;
+    }
+    
   }
   
   .mood-tabs .mood-tab-list {

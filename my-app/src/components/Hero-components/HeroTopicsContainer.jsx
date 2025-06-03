@@ -24,7 +24,7 @@ const HeroTopicsContainer = () => {
             initial={{ opacity: 0, y: 100 }} // Starts from below
             transition={{ duration: 1 }}
           >
-            <Link to="/articles?category=cardiovascular" className="card-hover">
+            <Link to="/health-topics?category=cardiovascular" className="card-hover">
               <div className="card-contents">
                 <div className="icon-container">
                   <svg
@@ -59,7 +59,7 @@ const HeroTopicsContainer = () => {
             initial={{ opacity: 0, y: 100 }} // Starts from below
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <Link to="/articles?category=diabetes" className="card-hover">
+            <Link to="/health-topics?category=diabetes" className="card-hover">
               <div className="card-contents">
                 <div className="icon-container">
                   <svg
@@ -94,7 +94,7 @@ const HeroTopicsContainer = () => {
             initial={{ opacity: 0, y: 100 }} // Starts from below
             transition={{ duration: 1, delay: 0.4 }}
           >
-            <Link to="/articles?category=mental-health" className="card-hover">
+            <Link to="/health-topics?category=mental-health" className="card-hover">
               <div className="card-contents">
                 <div className="icon-container">
                   <svg
@@ -130,7 +130,7 @@ const HeroTopicsContainer = () => {
             initial={{ opacity: 0, y: 100 }} // Starts from below
             transition={{ duration: 1, delay: 0.6 }}
           >
-            <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/articles?category=nutrition">
+            <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/health-topics?category=nutrition">
               <div className="card-contents px-6 py-8 flex-1">
                 <div className="icon-containers mbs-4 rounded-full w-16 h-16 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-apple h-8 w-8">
@@ -153,7 +153,7 @@ const HeroTopicsContainer = () => {
             initial={{ opacity: 0, y: 100 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/articles?category=fitness">
+            <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/health-topics?category=fitness">
               <div className="card-contents px-6 py-8 flex-1">
                 <div className="icon-container mbs-4 rounded-full w-16 h-16 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-dumbbell h-8 w-8">
@@ -179,7 +179,7 @@ const HeroTopicsContainer = () => {
             initial={{ opacity: 0, y: 100 }} // Starts from below
             transition={{ duration: 1, delay: 1 }}
           >
-            <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/articles?category=preventive-care">
+            <Link className="card-hover flex flex-col bg-white rounded-lg shadow-lg overflow-hidden" to="/health-topics?category=preventive-care">
               <div className="card-contents px-6 py-8 flex-1">
                 <div className="icon-container mbs-4 rounded-full w-16 h-16 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon-apple h-8 w-8">

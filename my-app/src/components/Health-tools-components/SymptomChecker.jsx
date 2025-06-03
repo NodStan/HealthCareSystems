@@ -2,15 +2,7 @@ import React, { useState } from 'react';
 import './SymptomChecker.css';
 import { motion } from 'framer-motion';
 import { useDarkMode } from '../DarkModeContext';
-import { Search } from "lucide-react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter
-} from '../Mood/Card';
+import Select from 'react-select';
 
 const SymptomChecker = ({
   firstAidInfo = {},
@@ -158,6 +150,7 @@ const SymptomChecker = ({
     setPossibleConditions([]);
     setSelectedCondition(null);
   };
+  
 
   return (
     <div className={`symptom-checker ${isDarkMode ? 'dark' : ''}`}>
@@ -284,15 +277,16 @@ const SymptomChecker = ({
                   <label htmlFor="bodyPartSelect">Or select area of the body</label>
                   <select
                     id="bodyPartSelect"
+                    className='bodyPartSelect'
                     value={selectedBodyPart}
                     onChange={(e) => {
                       setSelectedBodyPart(e.target.value);
-                      setSearchQuery(""); // clear search if selecting body part
+                      setSearchQuery("");
                     }}
                   >
-                    <option value="">Select body area</option>
+                    <option className='options' value="">Select body area</option>
                     {bodyParts.map((part) => (
-                      <option key={part.id} value={part.id}>
+                      <option className='options' key={part.id} value={part.id}>
                         {part.name}
                       </option>
                     ))}
@@ -365,15 +359,15 @@ const SymptomChecker = ({
             {step === 2 && (
               <div className="checker-step">
                 <h2 className="checker-title">Step 2: Symptom Details</h2>
-
+                <p className="card-description">Choose the symptoms you're experiencing either by searching or selecting a body area.</p>
                 <div className="checker-section">
                   <label className="checker-label">How severe are your symptoms?</label>
                   <select value={severity} onChange={e => setSeverity(e.target.value)} className="checker-select">
                     <option value="">Select severity</option>
-                    <option value="mild">Mild</option>
-                    <option value="moderate">Moderate</option>
-                    <option value="severe">Severe</option>
-                    <option value="very-severe">Very Severe</option>
+                    <option value="mild">Mild - Noticeable but not interfering with daily activities</option>
+                    <option value="moderate">Moderate - Affecting some daily activities</option>
+                    <option value="severe">Severe - Significantly impacting daily life</option>
+                    <option value="very-severe">Very Severe - Unable to perform daily activities</option>
                   </select>
                 </div>
 
@@ -381,12 +375,12 @@ const SymptomChecker = ({
                   <label className="checker-label">How long have you had these symptoms?</label>
                   <select value={duration} onChange={e => setDuration(e.target.value)} className="checker-select">
                     <option value="">Select duration</option>
-                    <option value="hours">Hours</option>
-                    <option value="days">Days</option>
+                    <option value="hours">Hours (Less than a day)</option>
+                    <option value="days">Days (1-6 days)</option>
                     <option value="week">About a week</option>
-                    <option value="weeks">Weeks</option>
+                    <option value="weeks">Weeks (2-3 weeks)</option>
                     <option value="month">About a month</option>
-                    <option value="months">Months</option>
+                    <option value="months">Months (2+ months)</option>
                   </select>
                 </div>
 

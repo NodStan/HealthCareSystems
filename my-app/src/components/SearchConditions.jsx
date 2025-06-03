@@ -187,12 +187,11 @@ const SearchConditions = () => {
     } finally {
       setLoading(false);
     }
-  };x
+  };
 
   return (
     <div className="containers">
       <h1 className="title">Health Condition Search</h1>
-
       <form onSubmit={handleSubmit} className="search-form">
         <div className="form-row">
           <div className="input-wrapper">

@@ -489,6 +489,78 @@
   border: none;
 }
 
+.content.dark .dashboard-header{
+  background-color: #020817;
+}
+
+.content.dark .dashboard-title{
+  color: #fff;
+}
+
+.content.dark .completes-card{
+  background-color: #020817;
+  border: 1px solid #1E293B;
+}
+
+.content.dark .completes-card-title{
+  color: #fff;
+}
+
+.content.dark .completes{
+  background-color: #1E293B;
+  color: #fff;
+}
+
+.content.dark .completes-value{
+  color: #fff;
+}
+
+.content.dark .completess-card{
+  background-color: #020817;
+  border: 1px solid #1E293B;
+}
+
+.content.dark .completess-title {
+  color: #fff;
+}
+
+.content.dark .completess-alert-title {
+  color: #fff;
+}
+
+.content.dark .completess-recommendation-title{
+  color: #fff;
+}
+
+.content.dark .completess-reading-title{
+  color: #fff;
+}
+
+.content.dark .mood-tracker-container .mood-card{
+  background-color: #020817;
+  color: #fff;
+  border: 1px solid #1E293B;
+}
+
+.content.dark .mood-tracker-container h3{
+  color: #fff;
+}
+
+.content.dark .mood-tracker-container p{
+  color: #64748B;
+}
+
+.content.dark .mood-tracker-container .mood-label{
+  color: #fff !important;
+}
+
+.content.dark .mood-tracker-container .mood-title{
+  color: #fff;
+}
+
+.content.dark .mood-tracker-container .mood-note{
+  color: #fff !important;
+}
 @media (max-width: 768px) {
   .content {
     margin-top: 4rem;
